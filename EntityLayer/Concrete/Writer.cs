@@ -40,6 +40,6 @@ namespace EntityLayer.Concrete
         public string WriterPassword { get; set; }
 
         public virtual ICollection<Heading> Headings { get; set; }
-        public ICollection<Content> Contents { get; set; }
+        public virtual ICollection<Content> Contents { get; set; }
     }
 }
