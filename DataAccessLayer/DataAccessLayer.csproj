@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Concrete\Context.cs" />
+    <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
     <Compile Include="Migrations\202503160841389_mg1.cs" />
     <Compile Include="Migrations\202503160841389_mg1.Designer.cs">
       <DependentUpon>202503160841389_mg1.cs</DependentUpon>
