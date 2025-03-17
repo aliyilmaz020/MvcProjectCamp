@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +13,16 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int CategoryId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Bu alanın girilmesi zorunludur")]
         [DisplayName("Kategori Adı")]
-        [DataType("varchar")]
-        [StringLength(20)]
+        [Column(TypeName = "Varchar")]
+        [StringLength(20,ErrorMessage ="En Fazla 20 Karakter Giriniz")]
         public string CategoryName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Bu alanın girilmesi zorunludur")]
         [DisplayName("Açıklama")]
-        [DataType("varchar")]
-        [StringLength(500)]
+        [Column(TypeName = "Varchar")]
+        [StringLength(500, ErrorMessage = "En Fazla 500 Karakter Giriniz")]
         public string CategoryDescription { get; set; }
-        [Required]
         [DisplayName("Durum")]
         public bool CategoryStatus { get; set; }
 

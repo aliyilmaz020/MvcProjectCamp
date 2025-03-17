@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,28 +15,28 @@ namespace EntityLayer.Concrete
         public int WriterId { get; set; }
         [Required]
         [DisplayName("Adı")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(20)]
         public string WriterName { get; set; }
         [Required]
         [DisplayName("Soyadı")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(20)]
         public string WriterSurname { get; set; }
         [Required]
         [DisplayName("Görsel")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(300)]
         public string WriterImage { get; set; }
         [Required]
         [DisplayName("E-Posta")]
         [EmailAddress(ErrorMessage = "E-Posta adresinizi doğru biçimde giriniz")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(100)]
         public string WriterMail { get; set; }
         [Required]
         [DisplayName("Şifre")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(20)]
         public string WriterPassword { get; set; }
 

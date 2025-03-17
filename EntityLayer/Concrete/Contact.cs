@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,22 +15,22 @@ namespace EntityLayer.Concrete
         public int ContactId { get; set; }
         [Required]
         [DisplayName("Kullanıcı Adı")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string UserName { get; set; }
         [Required]
         [DisplayName("E-Posta Adresi")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(100)]
         public string UserMail { get; set; }
         [Required]
         [DisplayName("Konu")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(100)]
         public string Subject { get; set; }
         [Required]
         [DisplayName("Mesaj")]
-        [DataType("varchar")]
+        [Column(TypeName = "Varchar")]
         [StringLength(1000)]
         public string Message { get; set; }
     }
