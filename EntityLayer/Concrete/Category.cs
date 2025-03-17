@@ -18,7 +18,7 @@ namespace EntityLayer.Concrete
         [StringLength(20)]
         public string CategoryName { get; set; }
         [Required]
-        [DisplayName("Kategori Adı")]
+        [DisplayName("Açıklama")]
         [DataType("varchar")]
         [StringLength(500)]
         public string CategoryDescription { get; set; }
