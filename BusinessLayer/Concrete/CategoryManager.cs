@@ -13,7 +13,7 @@ namespace BusinessLayer.Concrete
     public class CategoryManager : ICategoryService
     {
         ICategoryDal _categoryDal;
-
+        //ctor business method
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
