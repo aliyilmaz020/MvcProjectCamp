@@ -29,16 +29,12 @@ namespace MvcProjectCamp.Controllers
         }
         public ActionResult AddCategory(Category p)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View();
-            //}
             CategoryValidator validator = new CategoryValidator();
             ValidationResult results = validator.Validate(p);
             if (results.IsValid)
             {
-                manager.CategoryAdd(p);
                 p.CategoryStatus = true;
+                manager.CategoryAdd(p);
                 return RedirectToAction("Index");
             }
             else
