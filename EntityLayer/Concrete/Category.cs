@@ -16,7 +16,7 @@ namespace EntityLayer.Concrete
         //[Required(ErrorMessage ="Bu alanın girilmesi zorunludur")]
         [DisplayName("Kategori Adı")]
         [Column(TypeName = "Varchar")]
-        [StringLength(20/*,ErrorMessage ="En Fazla 20 Karakter Giriniz"*/)]
+        //[StringLength(20/*,ErrorMessage ="En Fazla 20 Karakter Giriniz"*/)]
         public string CategoryName { get; set; }
         //[Required(ErrorMessage = "Bu alanın girilmesi zorunludur")]
         [DisplayName("Açıklama")]

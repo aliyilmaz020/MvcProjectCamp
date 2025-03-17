@@ -37,7 +37,7 @@ namespace MvcProjectCamp.Controllers
             ValidationResult results = validator.Validate(p);
             if (results.IsValid)
             {
-                manager.CategoryAddBL(p);
+                manager.CategoryAdd(p);
                 p.CategoryStatus = true;
                 return RedirectToAction("Index");
             }

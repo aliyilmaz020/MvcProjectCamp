@@ -7,13 +7,15 @@
 <br />
 @using (Html.BeginForm(FormMethod.Post))
 {
-    @Html.LabelFor(x => x.CategoryName)
-    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
-    <br />
-    @Html.LabelFor(x => x.CategoryDescription)
-    @Html.TextAreaFor(x => x.CategoryDescription, 4, 1, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.CategoryDescription, "", new { @style = "color:red" })
-    <br />
-    <button class="btn btn-success">Kategori Ekle</button>
+    <div class="form-group">
+        @Html.LabelFor(x => x.CategoryName)
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.CategoryDescription)
+        @Html.TextAreaFor(x => x.CategoryDescription, 4, 1, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryDescription, "", new { @style = "color:red" })
+        <br />
+        <button class="btn btn-success">Kategori Ekle</button>
+    </div>
 }
