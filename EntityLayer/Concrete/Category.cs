@@ -13,15 +13,15 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int CategoryId { get; set; }
-        [Required(ErrorMessage ="Bu alanın girilmesi zorunludur")]
+        //[Required(ErrorMessage ="Bu alanın girilmesi zorunludur")]
         [DisplayName("Kategori Adı")]
         [Column(TypeName = "Varchar")]
-        [StringLength(20,ErrorMessage ="En Fazla 20 Karakter Giriniz")]
+        [StringLength(20/*,ErrorMessage ="En Fazla 20 Karakter Giriniz"*/)]
         public string CategoryName { get; set; }
-        [Required(ErrorMessage = "Bu alanın girilmesi zorunludur")]
+        //[Required(ErrorMessage = "Bu alanın girilmesi zorunludur")]
         [DisplayName("Açıklama")]
         [Column(TypeName = "Varchar")]
-        [StringLength(500, ErrorMessage = "En Fazla 500 Karakter Giriniz")]
+        [StringLength(500/*, ErrorMessage = "En Fazla 500 Karakter Giriniz"*/)]
         public string CategoryDescription { get; set; }
         [DisplayName("Durum")]
         public bool? CategoryStatus { get; set; }

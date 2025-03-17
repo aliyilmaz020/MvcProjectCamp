@@ -1,9 +1,12 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,13 +29,26 @@ namespace MvcProjectCamp.Controllers
         }
         public ActionResult AddCategory(Category p)
         {
-            if (!ModelState.IsValid)
+            //if (!ModelState.IsValid)
+            //{
+            //    return View();
+            //}
+            CategoryValidator validator = new CategoryValidator();
+            ValidationResult results = validator.Validate(p);
+            if (results.IsValid)
             {
-                return View();
+                manager.CategoryAddBL(p);
+                p.CategoryStatus = true;
+                return RedirectToAction("Index");
             }
-            p.CategoryStatus = true;
-            //manager.CategoryAddBL(p);
-            return RedirectToAction("Index");
+            else
+            {
+                foreach (var x in results.Errors)
+                {
+                    ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
+                }
+            }
+            return View();
         }
     }
 }
