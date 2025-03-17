@@ -24,7 +24,7 @@ namespace EntityLayer.Concrete
         [StringLength(500, ErrorMessage = "En Fazla 500 Karakter Giriniz")]
         public string CategoryDescription { get; set; }
         [DisplayName("Durum")]
-        public bool CategoryStatus { get; set; }
+        public bool? CategoryStatus { get; set; }
 
         public virtual ICollection<Heading> Headings { get; set; }
     }
