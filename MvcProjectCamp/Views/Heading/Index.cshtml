@@ -1,0 +1,35 @@
+﻿@model List<EntityLayer.Concrete.Heading>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<title>Başlıklar</title>
+<br />
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Başlık Adı</th>
+            <th>Başlık Tarihi</th>
+            <th>Başlık Saati</th>
+            <th>Kategori</th>
+            <th>Yazar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <th>@{count++;} @count.</th>
+                <td>@x.HeadingName</td>
+                <td>@x.HeadingDate.ToShortDateString()</td>
+                <td>@x.HeadingDate.ToShortTimeString()</td>
+                <td>@x.Category.CategoryName</td>
+                <td>@x.Writer.WriterName @x.Writer.WriterSurname</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Heading/AddHeading" class="btn btn-outline-primary">Başlık Ekle</a>

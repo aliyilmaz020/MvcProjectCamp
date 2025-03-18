@@ -13,17 +13,17 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int HeadingId { get; set; }
-        [Required]
         [DisplayName("Başlık Adı")]
         [Column(TypeName = "Varchar")]
-        [StringLength(50)]
         public string HeadingName { get; set; }
         [Required]
         [DisplayName("Tarih")]
         public DateTime HeadingDate { get; set; }
 
+        [DisplayName("Kategori")]
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
+        [DisplayName("Yazar")]
         public int WriterId { get; set; }
         public virtual Writer Writer { get; set; }
         public virtual ICollection<Content> Contents { get; set; }
