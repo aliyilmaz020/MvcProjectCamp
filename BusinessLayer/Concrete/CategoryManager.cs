@@ -24,6 +24,11 @@ namespace BusinessLayer.Concrete
             _categoryDal.Insert(p);
         }
 
+        public void CategoryRemove(Category p)
+        {
+            _categoryDal.Remove(p);
+        }
+
         public Category GetById(int id)
         {
             return _categoryDal.Get(x => x.CategoryId == id);

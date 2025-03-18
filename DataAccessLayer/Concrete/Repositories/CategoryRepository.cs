@@ -20,6 +20,11 @@ namespace DataAccessLayer.Concrete.Repositories
             return _object.Find(id);
         }
 
+        public Category Get(Expression<Func<Category, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(Category p)
         {
             _object.Add(p);
