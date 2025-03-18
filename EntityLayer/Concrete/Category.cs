@@ -15,12 +15,10 @@ namespace EntityLayer.Concrete
         public int CategoryId { get; set; }
         
         [DisplayName("Kategori Adı")]
-        [StringLength(20)]
         [Column(TypeName = "Varchar")]
         public string CategoryName { get; set; }
         [DisplayName("Açıklama")]
         [Column(TypeName = "Varchar")]
-        [StringLength(500)]
         public string CategoryDescription { get; set; }
         [DisplayName("Durum")]
         public bool? CategoryStatus { get; set; }
