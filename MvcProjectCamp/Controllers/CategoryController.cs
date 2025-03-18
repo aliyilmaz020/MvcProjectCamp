@@ -19,7 +19,7 @@ namespace MvcProjectCamp.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            var values = manager.GetList();
+            var values = manager.TGetList();
             return View(values);
         }
         [HttpGet]
@@ -34,7 +34,7 @@ namespace MvcProjectCamp.Controllers
             if (results.IsValid)
             {
                 p.CategoryStatus = true;
-                manager.CategoryAdd(p);
+                manager.TAdd(p);
                 return RedirectToAction("Index");
             }
             else

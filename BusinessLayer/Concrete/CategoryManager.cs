@@ -13,36 +13,35 @@ namespace BusinessLayer.Concrete
     public class CategoryManager : ICategoryService
     {
         ICategoryDal _categoryDal;
-        //ctor business method
+
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
         }
 
-        public void CategoryAdd(Category p)
+        public void TAdd(Category p)
         {
             _categoryDal.Insert(p);
         }
 
-        public void CategoryRemove(Category p)
-        {
-            _categoryDal.Remove(p);
-        }
-
-        public void CategoryUpdate(Category p)
-        {
-            _categoryDal.Update(p);
-        }
-
-        public Category GetById(int id)
+        public Category TGetById(int id)
         {
             return _categoryDal.Get(x => x.CategoryId == id);
         }
 
-        public List<Category> GetList()
+        public List<Category> TGetList()
         {
             return _categoryDal.List();
         }
 
+        public void TRemove(Category p)
+        {
+            _categoryDal.Remove(p);
+        }
+
+        public void TUpdate(Category p)
+        {
+            _categoryDal.Update(p);
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace MvcProjectCamp.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         public ActionResult Index()
         {
-            var values = cm.GetList();
+            var values = cm.TGetList();
             return View(values);
         }
         [HttpGet]
@@ -33,7 +33,7 @@ namespace MvcProjectCamp.Controllers
             if (results.IsValid)
             {
                 p.CategoryStatus = true;
-                cm.CategoryAdd(p);
+                cm.TAdd(p);
                 return RedirectToAction("Index");
             }
             else
@@ -47,14 +47,14 @@ namespace MvcProjectCamp.Controllers
         }
         public ActionResult RemoveCategory(int id)
         {
-            var value = cm.GetById(id);
-            cm.CategoryRemove(value);
+            var value = cm.TGetById(id);
+            cm.TRemove(value);
             return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult EditCategory(int id)
         {
-            var value = cm.GetById(id);
+            var value = cm.TGetById(id);
             return View(value);
         }
         [HttpPost]
@@ -64,7 +64,7 @@ namespace MvcProjectCamp.Controllers
             ValidationResult results = validations.Validate(p);
             if (results.IsValid)
             {
-                cm.CategoryUpdate(p);
+                cm.TUpdate(p);
                 return RedirectToAction("Index");
             }
             else
