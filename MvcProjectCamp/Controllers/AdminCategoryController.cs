@@ -38,19 +38,43 @@ namespace MvcProjectCamp.Controllers
             }
             else
             {
-                foreach(var x in results.Errors)
+                foreach (var x in results.Errors)
                 {
                     ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
                 }
             }
             return View();
         }
-        public ActionResult Remove(int id)
+        public ActionResult RemoveCategory(int id)
         {
             var value = cm.GetById(id);
             cm.CategoryRemove(value);
             return RedirectToAction("Index");
         }
-        
+        [HttpGet]
+        public ActionResult EditCategory(int id)
+        {
+            var value = cm.GetById(id);
+            return View(value);
+        }
+        [HttpPost]
+        public ActionResult EditCategory(Category p)
+        {
+            CategoryValidator validations = new CategoryValidator();
+            ValidationResult results = validations.Validate(p);
+            if (results.IsValid)
+            {
+                cm.CategoryUpdate(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var x in results.Errors)
+                {
+                    ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
+                }
+            }
+            return View();
+        }
     }
 }

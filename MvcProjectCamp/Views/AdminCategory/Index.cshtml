@@ -22,8 +22,8 @@
             <tr>
                 <th>@{count++;} @count</th>
                 <td>@item.CategoryName</td>
-                <td><a href="/AdminCategory/Remove/@item.CategoryId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/AdminCategory/GetCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/AdminCategory/RemoveCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
                 <td><a href="/AdminCategory/Headings/@item.CategoryId" class="btn btn-dark">Başlıklar</a></td>
             </tr>
         }
