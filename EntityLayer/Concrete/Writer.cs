@@ -29,6 +29,13 @@ namespace EntityLayer.Concrete
         [Column(TypeName = "Varchar")]
         public string WriterPassword { get; set; }
 
+        [DisplayName("Hakkımda")]
+        [Column(TypeName = "varchar")]
+        public string WriterAbout { get; set; }
+
+        [DisplayName("Unvan")]
+        [Column(TypeName = "varchar")]
+        public string WriterTitle { get; set; }
         public virtual ICollection<Heading> Headings { get; set; }
         public virtual ICollection<Content> Contents { get; set; }
     }

@@ -1,13 +1,14 @@
 ﻿@model EntityLayer.Concrete.Writer
 @{
-    ViewBag.Title = "AddWriter";
+    ViewBag.Title = "EditWriter";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<title>Yazar Ekleme</title>
+<title>Yazar Güncelleme</title>
 <br />
 <form method="post">
     <div class="form-group-lg">
+        @Html.HiddenFor(x => x.WriterId)
         @Html.LabelFor(x => x.WriterName)
         @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterName, "", new { @style = "color:red" })
@@ -36,8 +37,6 @@
         @Html.TextAreaFor(x => x.WriterAbout, 5, 1, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterAbout, "", new { @style = "color:red" })
         <br />
-
         <button type="submit" class="btn btn-outline-success">Kaydet</button>
     </div>
 </form>
-

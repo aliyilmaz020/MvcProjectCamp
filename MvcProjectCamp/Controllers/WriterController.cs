@@ -16,6 +16,8 @@ namespace MvcProjectCamp.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterDal());
+        WriterValidator validations = new WriterValidator();
+
         public ActionResult Index()
         {
             var values = wm.TGetList();
@@ -29,11 +31,40 @@ namespace MvcProjectCamp.Controllers
         [HttpPost]
         public ActionResult AddWriter(Writer p)
         {
-            WriterValidator validator = new WriterValidator();
-            ValidationResult results = validator.Validate(p);
+            ValidationResult results = validations.Validate(p);
             if (results.IsValid)
             {
                 wm.TAdd(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var result in results.Errors)
+                {
+                    ModelState.AddModelError(result.PropertyName, result.ErrorMessage);
+                }
+            }
+            return View();
+        }
+        public ActionResult RemoveWriter(int id)
+        {
+            var value = wm.TGetById(id);
+            wm.TRemove(value);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult EditWriter(int id)
+        {
+            var value = wm.TGetById(id);
+            return View(value);
+        }
+        [HttpPost]
+        public ActionResult EditWriter(Writer p)
+        {
+            ValidationResult results = validations.Validate(p);
+            if (results.IsValid)
+            {
+                wm.TUpdate(p);
                 return RedirectToAction("Index");
             }
             else

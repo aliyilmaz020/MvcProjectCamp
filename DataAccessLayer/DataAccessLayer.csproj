@@ -123,6 +123,14 @@
     <Compile Include="Migrations\202503181521523_mg121.Designer.cs">
       <DependentUpon>202503181521523_mg121.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503181543256_mg13.cs" />
+    <Compile Include="Migrations\202503181543256_mg13.Designer.cs">
+      <DependentUpon>202503181543256_mg13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503181610306_mg14.cs" />
+    <Compile Include="Migrations\202503181610306_mg14.Designer.cs">
+      <DependentUpon>202503181610306_mg14.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503181521523_mg121.resx">
       <DependentUpon>202503181521523_mg121.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503181543256_mg13.resx">
+      <DependentUpon>202503181543256_mg13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503181610306_mg14.resx">
+      <DependentUpon>202503181610306_mg14.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
