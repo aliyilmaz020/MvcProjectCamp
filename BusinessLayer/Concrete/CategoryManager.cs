@@ -19,10 +19,14 @@ namespace BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
-        
         public void CategoryAdd(Category p)
         {
             _categoryDal.Insert(p);
+        }
+
+        public Category GetById(int id)
+        {
+            return _categoryDal.Get(x => x.CategoryId == id);
         }
 
         public List<Category> GetList()
