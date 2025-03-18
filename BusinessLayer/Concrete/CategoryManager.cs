@@ -26,7 +26,7 @@ namespace BusinessLayer.Concrete
 
         public Category TGetById(int id)
         {
-            return _categoryDal.Get(x => x.CategoryId == id);
+            return _categoryDal.GetById(x => x.CategoryId == id);
         }
 
         public List<Category> TGetList()

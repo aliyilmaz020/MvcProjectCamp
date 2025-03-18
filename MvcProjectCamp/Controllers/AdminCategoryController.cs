@@ -13,7 +13,6 @@ namespace MvcProjectCamp.Controllers
 {
     public class AdminCategoryController : Controller
     {
-
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         public ActionResult Index()
         {
@@ -25,6 +24,7 @@ namespace MvcProjectCamp.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult AddCategory(Category p)
         {

@@ -20,7 +20,7 @@ namespace DataAccessLayer.Concrete.Repositories
             return _object.Find(id);
         }
 
-        public Category Get(Expression<Func<Category, bool>> filter)
+        public Category GetById(Expression<Func<Category, bool>> filter)
         {
             throw new NotImplementedException();
         }

@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewBag.Title = "AddWriter";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<title>Yazar Ekleme</title>
+<br />
+<form method="post">
+    <div class="form-group-lg">
+        @Html.LabelFor(x => x.WriterName)
+        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterName, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.WriterSurname)
+        @Html.TextBoxFor(x => x.WriterSurname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterSurname, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.WriterMail)
+        @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterMail, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.WriterPassword)
+        @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.WriterImage)
+        @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterImage, "", new { @style = "color:red" })
+        <br />
+        <button type="submit" class="btn btn-outline-success">Kaydet</button>
+    </div>
+</form>
+
