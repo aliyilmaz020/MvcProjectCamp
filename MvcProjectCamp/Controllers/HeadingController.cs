@@ -83,7 +83,15 @@ namespace MvcProjectCamp.Controllers
         public ActionResult RemoveHeading(int id)
         {
             var value = hm.TGetById(id);
-            hm.TRemove(value);
+            if (value.HeadingStatus == false)
+            {
+                value.HeadingStatus = true;
+            }
+            else
+            {
+                value.HeadingStatus = false;
+            }
+            hm.TUpdate(value);
             return RedirectToAction("Index");
         }
         private List<SelectListItem> GetCategories()

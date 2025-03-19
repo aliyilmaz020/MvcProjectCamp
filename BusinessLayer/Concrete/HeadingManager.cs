@@ -37,14 +37,6 @@ namespace BusinessLayer.Concrete
 
         public void TRemove(Heading p)
         {
-            if(p.HeadingStatus == false)
-            {
-                p.HeadingStatus=true;
-            }
-            else
-            {
-                p.HeadingStatus = false;
-            }
             _headingDal.Update(p);
         }
 
