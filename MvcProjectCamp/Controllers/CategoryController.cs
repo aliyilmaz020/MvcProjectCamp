@@ -34,7 +34,7 @@ namespace MvcProjectCamp.Controllers
             if (results.IsValid)
             {
                 p.CategoryStatus = true;
-                manager.TAdd(p);
+                manager.TInsert(p);
                 return RedirectToAction("Index");
             }
             else

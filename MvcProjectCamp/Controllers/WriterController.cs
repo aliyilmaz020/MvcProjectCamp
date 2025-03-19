@@ -34,7 +34,7 @@ namespace MvcProjectCamp.Controllers
             ValidationResult results = validations.Validate(p);
             if (results.IsValid)
             {
-                wm.TAdd(p);
+                wm.TInsert(p);
                 return RedirectToAction("Index");
             }
             else

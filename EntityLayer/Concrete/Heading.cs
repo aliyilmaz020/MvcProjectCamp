@@ -26,6 +26,7 @@ namespace EntityLayer.Concrete
         [DisplayName("Yazar")]
         public int WriterId { get; set; }
         public virtual Writer Writer { get; set; }
+        public bool HeadingStatus { get; set; }
         public virtual ICollection<Content> Contents { get; set; }
        
     }

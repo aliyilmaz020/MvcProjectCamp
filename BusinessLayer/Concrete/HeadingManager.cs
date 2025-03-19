@@ -18,7 +18,7 @@ namespace BusinessLayer.Concrete
             _headingDal = headingDal;
         }
 
-        public void TAdd(Heading p)
+        public void TInsert(Heading p)
         {
             _headingDal.Insert(p);
         }

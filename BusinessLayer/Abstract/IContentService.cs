@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IGenericService<T> where T : class
+    public interface IContentService : IGenericService<Content>
     {
-        List<T> TGetList();
-        void TInsert(T p);
-        T TGetById(int id);
-        void TRemove(T p);
-        void TUpdate(T p);
+        List<Content> GetListHeadingById(int id);
     }
 }

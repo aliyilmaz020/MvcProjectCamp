@@ -38,7 +38,7 @@ namespace MvcProjectCamp.Controllers
             if (results.IsValid)
             {
                 p.HeadingDate = DateTime.Now;
-                hm.TAdd(p);
+                hm.TInsert(p);
                 return RedirectToAction("Index");
             }
             else

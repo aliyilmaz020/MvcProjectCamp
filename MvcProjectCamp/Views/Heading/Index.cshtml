@@ -4,7 +4,6 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    int count = 0;
     string color = "";
 }
 
@@ -92,7 +91,7 @@
                     <tbody>
                         @foreach (var x in Model)
                         {
-                            if (count % 2 == 0)
+                            if (x.HeadingId % 2 == 0)
                             {
                                 color = "badge badge-dark";
                             }
@@ -102,7 +101,7 @@
                             }
                             <tr>
                                 <td>
-                                    @{ count++;} @count
+                                    @x.HeadingId
                                 </td>
                                 <td>
                                     <a>
@@ -124,7 +123,7 @@
                                     <span class="@color">@x.Category.CategoryName</span>
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="#">
+                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@x.HeadingId">
                                         <i class="fas fa-folder">
                                         </i>
                                         Yazılar
