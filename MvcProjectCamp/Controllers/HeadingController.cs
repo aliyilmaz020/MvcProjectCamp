@@ -3,6 +3,7 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace MvcProjectCamp.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
         HeadingValidator validations = new HeadingValidator();
-        public ActionResult Index()
+        public ActionResult Index(int page=1)
         {
-            var value = hm.TGetList();
+            var value = hm.TGetList().ToPagedList(page,6);
             return View(value);
         }
         [HttpGet]

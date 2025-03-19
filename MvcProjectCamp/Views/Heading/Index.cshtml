@@ -1,4 +1,6 @@
-﻿@model List<EntityLayer.Concrete.Heading>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<EntityLayer.Concrete.Heading>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -11,6 +13,39 @@
 <html>
 
 <body class="hold-transition sidebar-mini">
+<style>
+    .pagination {
+        display: flex;
+        list-style: none;
+        justify-content: center; 
+        padding: 0;
+    }
+
+        .pagination li {
+            margin: 5px;
+        }
+
+            .pagination li a {
+                display: block;
+                padding: 8px 12px;
+                text-decoration: none;
+                color: #007bff;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+                .pagination li a:hover {
+                    background: #007bff;
+                    color: white;
+                }
+
+        .pagination .active a {
+            background: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+</style>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -106,37 +141,15 @@
                                     </a>
                                 </td>
                             </tr>
-
                         }
                     </tbody>
                 </table>
-
             </div>
+
             <!-- /.card-body -->
         </div>
+        @Html.PagedListPager(Model as IPagedList, page => Url.Action("Index", new { page }))
         <!-- /.card -->
     </section>
 </body>
 </html>
-
-
-
-@*<h2>Index</h2>
-    <br />
-    <table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Başlık</th>
-            <th>Kategori</th>
-        </tr>
-        @foreach(var item in Model)
-        {
-            <tr>
-                <td>@item.HeadingID</td>
-                <td>@item.HeadingName</td>
-                <td>@item.Category.CategoryName</td>
-            </tr>
-        }
-    </table>
-    <br />
-    <a href="/Heading/AddHeading" class="btn btn-info">Yeni başlık Girişi</a>*@
