@@ -52,6 +52,35 @@ namespace MvcProjectCamp.Controllers
             ViewBag.Writer = GetWriters();
             return View();
         }
+        [HttpGet]
+        public ActionResult EditHeading(int id)
+        {
+            ViewBag.Category = GetCategories();
+            ViewBag.Writer = GetWriters();
+            var value = hm.TGetById(id);
+            return View(value);
+        }
+        [HttpPost]
+        public ActionResult EditHeading(Heading p)
+        {
+            ModelState.Clear();
+            ValidationResult results = validations.Validate(p);
+            if(results.IsValid)
+            {
+                hm.TUpdate(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach(var x in results.Errors)
+                {
+                    ModelState.AddModelError(x.PropertyName,x.ErrorMessage);
+                }
+            }
+            ViewBag.Category = GetCategories();
+            ViewBag.Writer = GetWriters();
+            return View();
+        }
         private List<SelectListItem> GetCategories()
         {
             var values = cm.TGetList().Select(x => new SelectListItem

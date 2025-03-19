@@ -1,25 +1,25 @@
 ﻿@model EntityLayer.Concrete.Heading
 @{
-    ViewBag.Title = "AddHeading";
+    ViewBag.Title = "EditHeading";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<title>Başlık Ekleme</title>
+<title>Başlık Düzenleme</title>
 <br />
 <form method="post">
     <div class="form-group-lg">
+        @Html.HiddenFor(x=>x.HeadingId)
+        @Html.HiddenFor(x=>x.WriterId)
+        @Html.HiddenFor(x=>x.HeadingDate)
         @Html.LabelFor(x => x.HeadingName)
         @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.HeadingName, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.CategoryId)
-        @Html.DropDownListFor(x => x.CategoryId,ViewBag.Category as List<SelectListItem>, new { @class = "form-control" })
+        @Html.DropDownListFor(x => x.CategoryId, ViewBag.Category as List<SelectListItem>, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryId, "", new { @style = "color:red" })
-        <br />
-        @Html.LabelFor(x => x.WriterId)
-        @Html.DropDownListFor(x => x.WriterId, ViewBag.Writer as List<SelectListItem>,  new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.WriterId, "", new { @style = "color:red" })
         <br />
         <button type="submit" class="btn btn-outline-success">Kaydet</button>
     </div>
 </form>
+

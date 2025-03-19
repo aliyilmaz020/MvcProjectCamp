@@ -21,6 +21,7 @@ namespace EntityLayer.Concrete
         [Required]
         [DisplayName("Tarih")]
         public DateTime ContentDate { get; set; }
+        public bool ContentStatus { get; set; }
 
         public int HeadingId { get; set; }
         public virtual Heading Heading { get; set; }
