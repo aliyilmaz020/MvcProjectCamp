@@ -25,21 +25,8 @@ namespace MvcProjectCamp.Controllers
         [HttpGet]
         public ActionResult AddHeading()
         {
-            List<SelectListItem> category = cm.TGetList().Select(x => new SelectListItem
-            {
-                Text = x.CategoryName,
-                Value = x.CategoryId.ToString()
-            }).ToList();
-            category.Insert(0, new SelectListItem { Value = "0", Text = "Lütfen Kategori Seçiniz" });
-            ViewBag.Category = category;
-
-            List<SelectListItem> writer = wm.TGetList().Select(x => new SelectListItem
-            {
-                Text = x.WriterName + " " + x.WriterSurname,
-                Value = x.WriterId.ToString()
-            }).ToList(); 
-            writer.Insert(0, new SelectListItem { Value = "0", Text = "Lütfen Yazar Seçiniz" });
-            ViewBag.Writer = writer;
+            ViewBag.Category = GetCategories();
+            ViewBag.Writer = GetWriters();
             return View();
         }
         [HttpPost]
@@ -60,7 +47,29 @@ namespace MvcProjectCamp.Controllers
                     ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
                 }
             }
+            ViewBag.Category = GetCategories();
+            ViewBag.Writer = GetWriters();
             return View();
+        }
+        private List<SelectListItem> GetCategories()
+        {
+            var values = cm.TGetList().Select(x => new SelectListItem
+            {
+                Text = x.CategoryName,
+                Value = x.CategoryId.ToString()
+            }).ToList();
+            values.Insert(0, new SelectListItem { Value = "0", Text = "Lütfen Kategori Seçiniz" });
+            return values;
+        }
+        private List<SelectListItem> GetWriters()
+        {
+            var values = wm.TGetList().Select(x => new SelectListItem
+            {
+                Text = x.WriterName + " " + x.WriterSurname,
+                Value = x.WriterId.ToString()
+            }).ToList();
+            values.Insert(0, new SelectListItem { Value = "0", Text = "Lütfen Yazar Seçiniz" });
+            return values;
         }
     }
 }

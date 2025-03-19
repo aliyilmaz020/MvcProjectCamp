@@ -15,7 +15,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.HeadingName).NotEmpty().WithMessage("Bu alan boş geçilemez.")
                 .MinimumLength(3).WithMessage("En az 3 karakter giriniz.")
                 .MaximumLength(50).WithMessage("En fazla 50 karakter giriniz.");
-            RuleFor(x => x.CategoryId).NotEmpty().WithMessage("Bu alan boş geçilemez.").Must(x=>x>0).WithMessage("Bu alan boş geçilemez");
+            RuleFor(x => x.CategoryId).NotEmpty().WithMessage("Bu alan boş geçilemez.").Must(x => x > 0).WithMessage("Bu alan boş geçilemez");
             RuleFor(x => x.WriterId).NotEmpty().WithMessage("Bu alan boş geçilemez.").Must(x => x > 0).WithMessage("Bu alan boş geçilemez");
         }
     }
