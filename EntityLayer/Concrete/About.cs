@@ -13,25 +13,17 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int AboutId { get; set; }
-        [Required]
         [DisplayName("Detay 1")]
         [Column(TypeName = "Varchar")]
-        [StringLength(1000)]
         public string AboutDetails1 { get; set; }
-        [Required]
         [DisplayName("Detay 2")]
         [Column(TypeName = "Varchar")]
-        [StringLength(1000)]
         public string AboutDetails2 { get; set; }
-        [Required]
         [DisplayName("Görsel 1")]
         [Column(TypeName = "Varchar")]
-        [StringLength(200)]
         public string AboutImage1 { get; set; }
-        [Required]
         [DisplayName("Görsel 2")]
         [Column(TypeName = "Varchar")]
-        [StringLength(200)]
         public string AboutImage2 { get; set; }
     }
 }

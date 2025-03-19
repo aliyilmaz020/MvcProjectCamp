@@ -1,0 +1,40 @@
+﻿@model EntityLayer.Concrete.About
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Hakkımızda Ekleme</h3>
+        </div>
+        <form method="post" action="/About/AddAbout">
+            <div class="modal-body">
+                @Html.LabelFor(x => x.AboutDetails1)
+                @Html.TextBoxFor(x => x.AboutDetails1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AboutDetails1, "", new { @style = "color:red" })
+                <br />
+                @Html.LabelFor(x => x.AboutDetails2)
+                @Html.TextBoxFor(x => x.AboutDetails2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AboutDetails2, "", new { @style = "color:red" })
+                <br />
+                @Html.LabelFor(x => x.AboutImage1)
+                @Html.TextBoxFor(x => x.AboutImage1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AboutImage1, "", new { @style = "color:red" })
+                <br />
+                @Html.LabelFor(x => x.AboutImage2)
+                @Html.TextBoxFor(x => x.AboutImage2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.AboutImage2, "", new { @style = "color:red" })
+                <br />
+                <button type="submit" class="btn btn-outline-primary">Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#Modal1').on('shown.bs.modal', function () {
+            var form = $('#memberForm');
+            $.validator.unobtrusive.parse(form);
+        });
+    });
+</script>
+
+

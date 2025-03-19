@@ -1,0 +1,40 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<title>Hakkımızda</title>
+<h2>Hakkımızda</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Detay 1</th>
+            <th>Detay 2</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.AboutId</td>
+                <td>@x.AboutDetails1</td>
+                <td>@x.AboutDetails2</td>
+                <td><a class="btn btn-warning">Düzenle</a></td>
+                <td><a class="btn btn-danger">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button class="btn btn-outline-primary" data-toggle="modal" data-target="#Modal1">Ekle</button>
+<div class="modal fade" id="Modal1">
+    @Html.Action("Partial1", "About")
+</div>
+
