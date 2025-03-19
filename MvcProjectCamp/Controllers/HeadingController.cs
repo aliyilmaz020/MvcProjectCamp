@@ -18,9 +18,9 @@ namespace MvcProjectCamp.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
         HeadingValidator validations = new HeadingValidator();
-        public ActionResult Index(int page=1)
+        public ActionResult Index(int page = 1)
         {
-            var value = hm.TGetList().ToPagedList(page,6);
+            var value = hm.TGetList().ToPagedList(page, 6);
             return View(value);
         }
         [HttpGet]
@@ -37,7 +37,6 @@ namespace MvcProjectCamp.Controllers
             ValidationResult results = validations.Validate(p);
             if (results.IsValid)
             {
-                p.HeadingDate = DateTime.Now;
                 hm.TInsert(p);
                 return RedirectToAction("Index");
             }
@@ -50,7 +49,7 @@ namespace MvcProjectCamp.Controllers
             }
             ViewBag.Category = GetCategories();
             ViewBag.Writer = GetWriters();
-            return View();
+            return View(p);
         }
         [HttpGet]
         public ActionResult EditHeading(int id)
@@ -65,21 +64,27 @@ namespace MvcProjectCamp.Controllers
         {
             ModelState.Clear();
             ValidationResult results = validations.Validate(p);
-            if(results.IsValid)
+            if (results.IsValid)
             {
                 hm.TUpdate(p);
                 return RedirectToAction("Index");
             }
             else
             {
-                foreach(var x in results.Errors)
+                foreach (var x in results.Errors)
                 {
-                    ModelState.AddModelError(x.PropertyName,x.ErrorMessage);
+                    ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
                 }
             }
             ViewBag.Category = GetCategories();
             ViewBag.Writer = GetWriters();
             return View();
+        }
+        public ActionResult RemoveHeading(int id)
+        {
+            var value = hm.TGetById(id);
+            hm.TRemove(value);
+            return RedirectToAction("Index");
         }
         private List<SelectListItem> GetCategories()
         {

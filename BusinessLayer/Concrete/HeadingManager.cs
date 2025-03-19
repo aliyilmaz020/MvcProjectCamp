@@ -20,12 +20,14 @@ namespace BusinessLayer.Concrete
 
         public void TInsert(Heading p)
         {
+            p.HeadingStatus = true;
+            p.HeadingDate = DateTime.Now;
             _headingDal.Insert(p);
         }
 
         public Heading TGetById(int id)
         {
-            return _headingDal.GetById(x=>x.HeadingId == id);
+            return _headingDal.GetById(x => x.HeadingId == id);
         }
 
         public List<Heading> TGetList()
@@ -35,7 +37,15 @@ namespace BusinessLayer.Concrete
 
         public void TRemove(Heading p)
         {
-            _headingDal.Remove(p);
+            if(p.HeadingStatus == false)
+            {
+                p.HeadingStatus=true;
+            }
+            else
+            {
+                p.HeadingStatus = false;
+            }
+            _headingDal.Update(p);
         }
 
         public void TUpdate(Heading p)
