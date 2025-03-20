@@ -3,14 +3,15 @@
     ViewBag.Title = "EditHeading";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
 <title>Başlık Düzenleme</title>
 <br />
 <form method="post">
     <div class="form-group-lg">
-        @Html.HiddenFor(x=>x.HeadingId)
-        @Html.HiddenFor(x=>x.WriterId)
-        @Html.HiddenFor(x=>x.HeadingDate)
+        @Html.HiddenFor(x => x.HeadingId)
+        @Html.HiddenFor(x => x.WriterId)
+        @Html.HiddenFor(x => x.HeadingDate)
         @Html.LabelFor(x => x.HeadingName)
         @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.HeadingName, "", new { @style = "color:red" })

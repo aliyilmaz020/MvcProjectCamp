@@ -3,6 +3,7 @@
     ViewBag.Title = "AddHeading";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
 <title>Başlık Ekleme</title>
 <br />
@@ -13,11 +14,11 @@
         @Html.ValidationMessageFor(x => x.HeadingName, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.CategoryId)
-        @Html.DropDownListFor(x => x.CategoryId,ViewBag.Category as List<SelectListItem>, new { @class = "form-control" })
+        @Html.DropDownListFor(x => x.CategoryId, ViewBag.Category as List<SelectListItem>, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryId, "", new { @style = "color:red" })
         <br />
         @Html.LabelFor(x => x.WriterId)
-        @Html.DropDownListFor(x => x.WriterId, ViewBag.Writer as List<SelectListItem>,  new { @class = "form-control" })
+        @Html.DropDownListFor(x => x.WriterId, ViewBag.Writer as List<SelectListItem>, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.WriterId, "", new { @style = "color:red" })
         <br />
         <button type="submit" class="btn btn-outline-success">Kaydet</button>

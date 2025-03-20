@@ -1,41 +1,36 @@
-﻿@model List<EntityLayer.Concrete.Category>
+﻿@using EntityLayer.Concrete
+@model List<Category>
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
-<!DOCTYPE html>
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Kategoriler</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<title>Kategoriler</title>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Başlıklar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@{count++;} @count</th>
+                <td>@item.CategoryName</td>
+                <td><a href="/Category/RemoveCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Category/EditCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Category/Headings/@item.CategoryId" class="btn btn-dark">Başlıklar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-outline-primary" href="/Category/AddCategory">Yeni Kategori</a>
 
-</head>
-<body>
-    <div style="margin:17px;">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Kategori Adı</th>
-                    <th>Açıklama</th>
-                    <th>Güncelle</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var x in Model)
-                {
-                    <tr>
-                        <td>@x.CategoryId</td>
-                        <td>@x.CategoryName</td>
-                        <td>@x.CategoryDescription</td>
-                        <td><a class="btn btn-success">Güncelle</a></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <a href="/Category/AddCategory/" class="btn btn-primary">Yeni Kategori Ekle</a>
-    </div>
-</body>
-</html>

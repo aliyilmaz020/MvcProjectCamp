@@ -3,11 +3,12 @@
     ViewBag.Title = "EditCategory";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
 <title>Kategori Güncelleme</title>
 <form method="post">
     <div class="form-group-lg">
-        @Html.HiddenFor(x=>x.CategoryId)
+        @Html.HiddenFor(x => x.CategoryId)
         @Html.LabelFor(x => x.CategoryName)
         @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })

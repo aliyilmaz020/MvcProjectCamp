@@ -81,6 +81,10 @@
     <Compile Include="Migrations\202503201150450_mg-MessageRequired.Designer.cs">
       <DependentUpon>202503201150450_mg-MessageRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503202222289_mg-demo.cs" />
+    <Compile Include="Migrations\202503202222289_mg-demo.Designer.cs">
+      <DependentUpon>202503202222289_mg-demo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503201150450_mg-MessageRequired.resx">
       <DependentUpon>202503201150450_mg-MessageRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503202222289_mg-demo.resx">
+      <DependentUpon>202503202222289_mg-demo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

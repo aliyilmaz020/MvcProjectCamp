@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IMessageService : IGenericService<Message>
     {
+        List<Message> GetListInbox();
+        List<Message> GetListSendBox();
     }
 }

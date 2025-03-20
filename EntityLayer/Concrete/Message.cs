@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace EntityLayer.Concrete
 {
@@ -26,6 +27,7 @@ namespace EntityLayer.Concrete
         public string Subject { get; set; }
         [Required]
         [Column(TypeName = "varchar")]
+        [AllowHtml]
         public string MessageContent { get; set; }
         public DateTime MessageDate { get; set; }
 

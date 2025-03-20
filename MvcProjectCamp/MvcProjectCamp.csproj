@@ -143,7 +143,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
@@ -2043,8 +2042,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Category\AddCategory.cshtml" />
     <Content Include="Templates\webadmin\.babelrc" />
     <Content Include="Templates\webadmin\.browserslistrc" />
     <Content Include="Templates\webadmin\.editorconfig" />
@@ -2301,9 +2298,9 @@
     <Content Include="Templates\webadmin\plugins\toastr\toastr.js.map" />
     <Content Include="Templates\webadmin\README.md" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\AdminCategory\Index.cshtml" />
-    <Content Include="Views\AdminCategory\AddCategory.cshtml" />
-    <Content Include="Views\AdminCategory\EditCategory.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\AddCategory.cshtml" />
+    <Content Include="Views\Category\EditCategory.cshtml" />
     <Content Include="Views\Writer\Index.cshtml" />
     <Content Include="Views\Writer\AddWriter.cshtml" />
     <Content Include="Views\Writer\EditWriter.cshtml" />
@@ -2316,9 +2313,11 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Sidebar.cshtml" />
     <Content Include="Views\Contact\GetContactDetails.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Message\Inbox.cshtml" />
     <Content Include="Views\Message\Sidebar.cshtml" />
+    <Content Include="Views\Message\SendBox.cshtml" />
+    <Content Include="Views\Message\NewMessage.cshtml" />
+    <Content Include="Views\Message\GetMessageDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,110 @@
+﻿@model EntityLayer.Concrete.Message
+@{
+    ViewBag.Title = "NewMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Yeni Mesaj</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <!-- Theme style -->
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Templates/webadmin/plugins/summernote/summernote-bs4.css">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+<body class="hold-transition sidebar-mini">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Yeni Mesaj</h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- /.col -->
+            @Html.Action("Sidebar", "Message")
+            <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Yeni Mesaj Oluştur</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    @using (Html.BeginForm("NewMessage", "Message", FormMethod.Post))
+                    {
+                        <div class="card-body">
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.SenderMail, new { @class = "form-control", @placeholder = "Kimden:" })
+                                @Html.ValidationMessageFor(x => x.SenderMail, "", new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.ReceiverMail, new { @class = "form-control", @placeholder = "Kime:" })
+                                @Html.ValidationMessageFor(x => x.ReceiverMail, "", new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.Subject, new { @class = "form-control", @placeholder = "Konu:" })
+                                @Html.ValidationMessageFor(x => x.Subject, "", new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextAreaFor(x => x.MessageContent, 10, 1, new { id = "compose-textarea", @class = "form-control", placeholder = "Mesajınız:", style = "height: 300px" })
+                                @Html.ValidationMessageFor(x => x.MessageContent, "", new { @style = "color:red" })
+                            </div>
+                            @*<div class="form-group">
+                                    <div class="btn btn-default btn-file">
+                                        <i class="fas fa-paperclip"></i> Dosya Ekle
+                                        <input type="file" name="attachment">
+                                    </div>
+                                    <p class="help-block">Max. 32MB</p>
+                                </div>*@
+                            <button type="submit" class="btn btn-primary" style="float:right"><i class="far fa-envelope"></i> Gönder</button>
+                        </div>
+                    }
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
+                        </div>
+                        <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal</button>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Templates/webadmin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <!-- AdminLTE for demo purposes -->
+    <!-- Summernote -->
+    <script src="~/Templates/webadmin/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- Page Script -->
+    <script>
+        $(function () {
+            //Add text editor
+            $('#compose-textarea').summernote()
+        })</script>
+</body>
+</html>
+
+
+

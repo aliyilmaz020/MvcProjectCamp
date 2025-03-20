@@ -4,6 +4,7 @@
     ViewBag.Title = "ContentByHeading";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
 <!DOCTYPE html>
 <title>İçerikler</title>
@@ -22,20 +23,20 @@
                             <!-- timeline time label -->
                             @foreach (var x in Model)
                             {
-                            <div class="time-label">
-                                <span class="bg-success">@x.ContentDate.ToShortDateString()</span>
-                            </div>
-                            <!-- /.timeline-label -->
-                            <!-- timeline item -->
-                            <div>
-                                <i class="fas fa-comment bg-yellow"></i>
-                                <div class="timeline-item">
-                                    <h3 class="timeline-header"><a href="#">@x.Writer.WriterName @x.Writer.WriterSurname</a></h3>
-                                    <div class="timeline-body">
-                                        @x.ContentText
+                                <div class="time-label">
+                                    <span class="bg-success">@x.ContentDate.ToShortDateString()</span>
+                                </div>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <div>
+                                    <i class="fas fa-comment bg-yellow"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header"><a href="#">@x.Writer.WriterName @x.Writer.WriterSurname</a></h3>
+                                        <div class="timeline-body">
+                                            @x.ContentText
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             }
                             <!-- END timeline item -->
                         </div>

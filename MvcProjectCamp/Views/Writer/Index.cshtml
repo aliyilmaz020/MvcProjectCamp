@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
 <title>Yazarlar</title>
 <br />
@@ -50,7 +51,8 @@
                                 <div class="card-footer">
                                     <div class="text-right">
                                         <a href="/Writer/RemoveWriter/@item.WriterId" class="btn btn-sm btn-danger">
-                                       <i class="fas fa-remove-format"> Yazarı Sil</i></a>
+                                            <i class="fas fa-remove-format"> Yazarı Sil</i>
+                                        </a>
                                         <a href="#" class="btn btn-sm bg-teal">
                                             <i class="fas fa-comments"> Başlıklarım</i>
                                         </a>

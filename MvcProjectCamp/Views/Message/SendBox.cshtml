@@ -1,11 +1,11 @@
-﻿@model List<EntityLayer.Concrete.Contact>
+﻿@model List<EntityLayer.Concrete.Message>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SendBox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <!DOCTYPE html>
-<title>İletişim</title>
+<title>Gönderilmiş Mesajlar</title>
 <html>
 <body class="hold-transition sidebar-mini">
     <!-- Content Wrapper. Contains page content -->
@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>İletişim</h1>
+                    <h1>Mesajlar</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -22,12 +22,12 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            @Html.Action("Sidebar","Contact")
+            @Html.Action("Sidebar", "Message")
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Mesajlar</h3>
+                        <h3 class="card-title">Gönderilen Mesajlar</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" placeholder="Ara">
@@ -77,9 +77,9 @@
                                                 </div>
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Contact/GetContactDetails/@x.ContactId">@x.UserName</a></td>
+                                            <td class="mailbox-name"><a href="/Message/GetMessageDetails/@x.MessageId">@x.SenderMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@x.Subject</b> - @x.Message.Substring(0,30)...
+                                                <b>@x.Subject</b> - @x.MessageContent...
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">5 mins ago</td>
@@ -168,4 +168,8 @@
         })</script>
 </body>
 </html>
+
+
+
+
 
