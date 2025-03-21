@@ -26,7 +26,12 @@ namespace MvcProjectCamp.Controllers
             var values = manager.GetListSendBox();
             return View(values);
         }
-        public ActionResult GetMessageDetails(int id)
+        public ActionResult GetInBoxMessageDetails(int id)
+        {
+            var value = manager.TGetById(id);
+            return View(value);
+        }
+        public ActionResult GetSendBoxMessageDetails(int id)
         {
             var value = manager.TGetById(id);
             return View(value);
@@ -40,6 +45,7 @@ namespace MvcProjectCamp.Controllers
         public ActionResult NewMessage(Message p)
         {
             ModelState.Clear();
+            p.SenderMail = "admin@manager.com";
             ValidationResult results = validations.Validate(p);
             if (results.IsValid)
             {

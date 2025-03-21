@@ -5,17 +5,16 @@
 }
 
 <script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
-<link rel="stylesheet" href="~/Templates/webadmin/plugins/summernote/summernote-bs4.css">
+<title>Gelen Mesajın Detayları</title>
 <!DOCTYPE html>
 <html>
-
 <body class="hold-transition sidebar-mini">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Mesaj Detayları</h1>
+                    <h1>Gelen Mesajın Detayları</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -39,7 +38,7 @@
                         <div class="mailbox-read-info">
                             <h5>@Model.Subject</h5>
                             <h6>
-                                Kimden: @Model.SenderMail
+                                Gönderen: @Model.SenderMail
                                 <span class="mailbox-read-time float-right">@Model.MessageDate.ToString("dd MMM yyyy HH:mm")</span>
                             </h6>
                         </div>
@@ -64,10 +63,7 @@
                         <!-- /.mailbox-controls -->
                         <div id="formattedContent" class="form-control" style="height: 300px; overflow-y: auto;">
                             @Html.Raw(HttpUtility.HtmlDecode(Model.MessageContent))
-
                         </div>
-
-
                         <!-- /.mailbox-read-message -->
                     </div>
                     <!-- /.card-footer -->
@@ -78,14 +74,6 @@
         </div>
         <!-- /.row -->
     </section>
-    <script src="~/Templates/webadmin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="~/Templates/webadmin/plugins/summernote/summernote-bs4.min.js"></script>
-    <script>
-        $(function () {
-            //Add text editor
-            $('#compose-textarea').summernote()
-        })</script>
 </body>
 </html>
 

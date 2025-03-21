@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string date = "";
 }
 
 <!DOCTYPE html>
@@ -69,6 +70,14 @@
                                 <tbody>
                                     @foreach (var x in Model)
                                     {
+                                        if (x.ContactDate.Date == DateTime.Now.Date)
+                                        {
+                                            date = x.ContactDate.ToString("HH:mm");
+                                        }
+                                        else
+                                        {
+                                            date = x.ContactDate.ToString("dd MMM");
+                                        }
                                         <tr>
                                             <td>
                                                 <div class="icheck-primary">
@@ -82,7 +91,7 @@
                                                 <b>@x.Subject</b> - @x.Message.Substring(0,30)...
                                             </td>
                                             <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">5 mins ago</td>
+                                            <td class="mailbox-date">@date</td>
                                         </tr>
                                     }
                                 </tbody>

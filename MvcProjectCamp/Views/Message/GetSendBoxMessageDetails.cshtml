@@ -1,20 +1,19 @@
-﻿@model EntityLayer.Concrete.Contact
+﻿@model EntityLayer.Concrete.Message
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "GetSendBoxMessageDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<title>Gönderilen Mesajın Detayları</title>
 <script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
-
 <!DOCTYPE html>
 <html>
-
 <body class="hold-transition sidebar-mini">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>İletişim Mesaj Detayları</h1>
+                    <h1>Gönderilen Mesajın Detayları</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -22,7 +21,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            @Html.Action("Sidebar", "Contact")
+            @Html.Action("Sidebar", "Message")
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
@@ -38,8 +37,8 @@
                         <div class="mailbox-read-info">
                             <h5>@Model.Subject</h5>
                             <h6>
-                                Kimden: @Model.UserMail - @Model.UserName
-                                <span class="mailbox-read-time float-right">@Model.ContactDate.ToString("dd MMM yyyy HH:mm")</span>
+                                Alıcı: @Model.ReceiverMail
+                                <span class="mailbox-read-time float-right">@Model.MessageDate.ToString("dd MMM yyyy HH:mm")</span>
                             </h6>
                         </div>
                         <!-- /.mailbox-read-info -->
@@ -61,8 +60,8 @@
                             </button>
                         </div>
                         <!-- /.mailbox-controls -->
-                        <div class="mailbox-read-message">
-                            @Model.Message
+                        <div id="formattedContent" class="form-control" style="height: 300px; overflow-y: auto;">
+                            @Html.Raw(HttpUtility.HtmlDecode(Model.MessageContent))
                         </div>
                         <!-- /.mailbox-read-message -->
                     </div>
@@ -76,3 +75,5 @@
     </section>
 </body>
 </html>
+
+

@@ -33,5 +33,7 @@ namespace EntityLayer.Concrete
         [Column(TypeName = "Varchar")]
         [StringLength(1000)]
         public string Message { get; set; }
+        [DisplayName("Tarih")]
+        public DateTime ContactDate { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IRepository<T>
+    public interface IRepositoryDal<T>
     {
         T GetById(Expression<Func<T,bool>> filter);
         List<T> List();

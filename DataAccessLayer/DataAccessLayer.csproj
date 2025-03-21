@@ -57,7 +57,7 @@
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
-    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IRepositoryDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
@@ -85,6 +85,10 @@
     <Compile Include="Migrations\202503202222289_mg-demo.Designer.cs">
       <DependentUpon>202503202222289_mg-demo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503211303277_mg-ContactDate.cs" />
+    <Compile Include="Migrations\202503211303277_mg-ContactDate.Designer.cs">
+      <DependentUpon>202503211303277_mg-ContactDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503202222289_mg-demo.resx">
       <DependentUpon>202503202222289_mg-demo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503211303277_mg-ContactDate.resx">
+      <DependentUpon>202503211303277_mg-ContactDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
