@@ -62,7 +62,11 @@
                             </button>
                         </div>
                         <!-- /.mailbox-controls -->
-                        <textarea id="compose-textarea" class="form-control" style="height: 300px">@Model.MessageContent</textarea>
+                        <div id="formattedContent" class="form-control" style="height: 300px; overflow-y: auto;">
+                            @Html.Raw(HttpUtility.HtmlDecode(Model.MessageContent))
+
+                        </div>
+
 
                         <!-- /.mailbox-read-message -->
                     </div>

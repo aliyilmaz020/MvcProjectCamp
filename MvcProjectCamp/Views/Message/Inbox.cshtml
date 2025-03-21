@@ -1,4 +1,5 @@
-﻿@model List<EntityLayer.Concrete.Message>
+﻿@using System.Text.RegularExpressions
+@model List<EntityLayer.Concrete.Message>
 @{
     ViewBag.Title = "Inbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -80,7 +81,7 @@
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name"><a href="/Message/GetMessageDetails/@x.MessageId">@x.SenderMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@x.Subject</b> - @x.MessageContent...
+                                                <b>@x.Subject</b> - @Html.Raw(Regex.Replace(x.MessageContent, "<.*?>", ""))...
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">5 mins ago</td>
