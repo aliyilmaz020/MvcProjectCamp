@@ -146,6 +146,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\HeadingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -2028,6 +2029,10 @@
     <Content Include="Templates\webadmin\plugins\toastr\toastr.min.css" />
     <Content Include="Templates\webadmin\plugins\toastr\toastr.min.js" />
     <Content Include="Templates\webadmin\starter.html" />
+    <Content Include="Templates\weberror\css\style.css" />
+    <Content Include="Templates\weberror\img\bg.jpg" />
+    <Content Include="Templates\weberror\index.html" />
+    <Content Include="Templates\weberror\readme.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2319,6 +2324,7 @@
     <Content Include="Views\Message\NewMessage.cshtml" />
     <Content Include="Views\Message\GetInBoxMessageDetails.cshtml" />
     <Content Include="Views\Message\GetSendBoxMessageDetails.cshtml" />
+    <Content Include="Views\ErrorPage\Page404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

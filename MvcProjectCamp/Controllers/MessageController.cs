@@ -18,12 +18,12 @@ namespace MvcProjectCamp.Controllers
         // GET: Message
         public ActionResult Inbox()
         {
-            var values = manager.GetListInbox();
+            var values = manager.GetListInbox().OrderByDescending(x=>x.MessageDate).ToList();
             return View(values);
         }
         public ActionResult SendBox()
         {
-            var values = manager.GetListSendBox();
+            var values = manager.GetListSendBox().OrderByDescending(x => x.MessageDate).ToList();
             return View(values);
         }
         public ActionResult GetInBoxMessageDetails(int id)
