@@ -12,12 +12,21 @@ namespace MvcProjectCamp
     {
         protected void Application_Start()
         {
-            
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_EndRequest()
+        {
+            if (Response.StatusCode == 401)
+            {
+                Response.Clear();
+                Response.StatusCode = 302; // Temporary Redirect
+                Response.Redirect("~/ErrorPage/Page401", true);
+                Response.End();
+            }
+        }
+
     }
 }

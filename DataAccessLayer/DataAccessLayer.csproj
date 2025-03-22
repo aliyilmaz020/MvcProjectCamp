@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAboutDal.cs" />
+    <Compile Include="Abstract\IAdminDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAboutDal.cs" />
+    <Compile Include="EntityFramework\EfAdminDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
@@ -88,6 +90,10 @@
     <Compile Include="Migrations\202503211303277_mg-ContactDate.cs" />
     <Compile Include="Migrations\202503211303277_mg-ContactDate.Designer.cs">
       <DependentUpon>202503211303277_mg-ContactDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503211613047_mg-Admin.cs" />
+    <Compile Include="Migrations\202503211613047_mg-Admin.Designer.cs">
+      <DependentUpon>202503211613047_mg-Admin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503211303277_mg-ContactDate.resx">
       <DependentUpon>202503211303277_mg-ContactDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503211613047_mg-Admin.resx">
+      <DependentUpon>202503211613047_mg-Admin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

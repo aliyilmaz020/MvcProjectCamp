@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
+    [Authorize]
     public class AboutController : Controller
     {
         AboutManager manager = new AboutManager(new EfAboutDal());

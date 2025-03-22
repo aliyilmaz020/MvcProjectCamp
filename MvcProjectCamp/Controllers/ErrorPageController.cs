@@ -6,9 +6,14 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
+    [AllowAnonymous]
     public class ErrorPageController : Controller
     {
         // GET: ErrorPage
+        public ActionResult Page401()
+        {
+            return View();
+        }
         public ActionResult Page403()
         {
             Response.StatusCode = 403;

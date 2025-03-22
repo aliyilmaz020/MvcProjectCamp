@@ -18,6 +18,7 @@ namespace MvcProjectCamp.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
         HeadingValidator validations = new HeadingValidator();
+        
         public ActionResult Index(int page = 1)
         {
             var value = hm.TGetList().ToPagedList(page, 6);
