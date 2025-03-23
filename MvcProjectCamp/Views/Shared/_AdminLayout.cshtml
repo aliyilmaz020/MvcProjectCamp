@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     string user = "Test";
     if (Session["Username"] != null)
     {
@@ -59,14 +59,18 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="/Category/Index/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Kategoriler
-                                </p>
-                            </a>
-                        </li>
+                        @if (User.IsInRole("A"))
+                        {
+                            <li class="nav-item">
+                                <a href="/Category/Index/" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Kategoriler
+                                    </p>
+                                </a>
+                            </li>
+                        }
+
                         <li class="nav-item">
                             <a href="/Heading/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -112,14 +116,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/About/Index/" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    Hakkımızda
-                                </p>
-                            </a>
-                        </li>
+                        @if (User.IsInRole("A"))
+                        {
+                            <li class="nav-item has-treeview">
+                                <a href="/About/Index/" class="nav-link">
+                                    <i class="nav-icon fas fa-tree"></i>
+                                    <p>
+                                        Hakkımızda
+                                    </p>
+                                </a>
+                            </li>
+                        }
                         <li class="nav-item has-treeview">
                             <a href="/Message/Inbox/" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>

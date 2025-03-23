@@ -14,9 +14,16 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfAdminDal : GenericRepository<Admin>, IAdminDal
     {
-        public bool IsLogin(Expression<Func<Admin,bool>> filter)
+        public bool IsLogin(Expression<Func<Admin, bool>> filter)
         {
-              return _context.Set<Admin>().Any(filter);
+            return _context.Set<Admin>().Any(filter);
         }
+
+        public string UserRole(Expression<Func<Admin, bool>> filter)
+        {
+            var admin = _context.Set<Admin>().SingleOrDefault(filter);
+            return admin?.AdminRole ?? string.Empty;
+        }
+
     }
 }

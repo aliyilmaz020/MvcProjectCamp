@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "A")]
     public class CategoryController : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());

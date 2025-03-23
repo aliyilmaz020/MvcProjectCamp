@@ -10,7 +10,6 @@ using System.Web.Security;
 
 namespace MvcProjectCamp.Controllers
 {
-    [AllowAnonymous]
     public class LoginController : Controller
     {
         AdminManager manager = new AdminManager(new EfAdminDal());
@@ -27,7 +26,7 @@ namespace MvcProjectCamp.Controllers
             {
                 FormsAuthentication.SetAuthCookie(username.ToString(), false);
                 Session["Username"] = username.ToString();
-                return RedirectToAction("Index", "About");
+                return RedirectToAction("Index", "Writer");
             }
             else
             {

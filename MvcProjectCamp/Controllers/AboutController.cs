@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="A")]
     public class AboutController : Controller
     {
         AboutManager manager = new AboutManager(new EfAboutDal());
