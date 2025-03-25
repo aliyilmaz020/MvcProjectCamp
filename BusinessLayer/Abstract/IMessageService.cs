@@ -9,7 +9,12 @@ namespace BusinessLayer.Abstract
 {
     public interface IMessageService : IGenericService<Message>
     {
-        List<Message> GetListInbox();
-        List<Message> GetListSendBox();
+        List<Message> GetListInbox(string mail);
+        List<Message> GetListSendBox(string mail);
+        void IsRead(int id, bool isRead);
+        int GetReadMessageCount(string mail);
+        int GetSentMessageCount(string mail);
+        void MarkAsRead(List<int> messageIds);
+        void MarkAsUnRead(List<int> messageIds);
     }
 }

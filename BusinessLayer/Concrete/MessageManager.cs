@@ -18,14 +18,44 @@ namespace BusinessLayer.Concrete
             _messageDal = messageDal;
         }
 
-        public List<Message> GetListInbox()
+        public List<Message> GetListInbox(string mail)
         {
-            return _messageDal.List(x => x.ReceiverMail == "admin@manager.com");
+            return _messageDal.List(x => x.ReceiverMail == mail);
         }
 
-        public List<Message> GetListSendBox()
+        public List<Message> GetListSendBox(string mail)
         {
-            return _messageDal.List(x => x.SenderMail == "admin@manager.com");
+            return _messageDal.List(x => x.SenderMail == mail);
+        }
+
+        public int GetReadMessageCount(string mail)
+        {
+            return _messageDal.GetMessageCount(x => x.ReceiverMail == mail && x.MessageIsRead == false);
+        }
+
+        public int GetSentMessageCount(string mail)
+        {
+            return _messageDal.GetMessageCount(x => x.SenderMail == mail);
+        }
+
+        public void IsRead(int id, bool isRead)
+        {
+            var message = _messageDal.GetById(x => x.MessageId == id);
+            if (message != null)
+            {
+                message.MessageIsRead = isRead;
+                _messageDal.Update(message);
+            }
+        }
+
+        public void MarkAsRead(List<int> messageIds)
+        {
+            _messageDal.MarkAsRead(messageIds);
+        }
+
+        public void MarkAsUnRead(List<int> messageIds)
+        {
+            _messageDal.MarkAsUnRead(messageIds);
         }
 
         public Message TGetById(int id)
@@ -40,6 +70,7 @@ namespace BusinessLayer.Concrete
 
         public void TInsert(Message p)
         {
+            p.MessageIsRead = false;
             _messageDal.Insert(p);
         }
 

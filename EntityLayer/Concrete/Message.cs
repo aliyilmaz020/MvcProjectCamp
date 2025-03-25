@@ -29,6 +29,8 @@ namespace EntityLayer.Concrete
         [Column(TypeName = "varchar")]
         [AllowHtml]
         public string MessageContent { get; set; }
+        [Required]
+        public bool MessageIsRead { get; set; }
         public DateTime MessageDate { get; set; }
 
     }

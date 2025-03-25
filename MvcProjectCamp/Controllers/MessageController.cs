@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
+    [Authorize]
     public class MessageController : Controller
     {
         MessageManager manager = new MessageManager(new EfMessageDal());
@@ -18,17 +20,20 @@ namespace MvcProjectCamp.Controllers
         // GET: Message
         public ActionResult Inbox()
         {
-            var values = manager.GetListInbox().OrderByDescending(x=>x.MessageDate).ToList();
+            string mail = Session["Username"].ToString();
+            var values = manager.GetListInbox(mail).OrderByDescending(x => x.MessageDate).ToList();
             return View(values);
         }
         public ActionResult SendBox()
         {
-            var values = manager.GetListSendBox().OrderByDescending(x => x.MessageDate).ToList();
+            string mail = Session["Username"].ToString();
+            var values = manager.GetListSendBox(mail).OrderByDescending(x => x.MessageDate).ToList();
             return View(values);
         }
         public ActionResult GetInBoxMessageDetails(int id)
         {
             var value = manager.TGetById(id);
+            manager.IsRead(id,true);
             return View(value);
         }
         public ActionResult GetSendBoxMessageDetails(int id)
@@ -45,7 +50,8 @@ namespace MvcProjectCamp.Controllers
         public ActionResult NewMessage(Message p)
         {
             ModelState.Clear();
-            p.SenderMail = "admin@manager.com";
+            string mail = Session["Username"].ToString();
+            p.SenderMail = mail;
             ValidationResult results = validations.Validate(p);
             if (results.IsValid)
             {
@@ -62,19 +68,49 @@ namespace MvcProjectCamp.Controllers
             }
             return View(p);
         }
+        [HttpPost]
+        public ActionResult MarkAsRead(List<int> messageIds)
+        {
+
+            if (messageIds == null || !messageIds.Any())
+            {
+                TempData["Message"] = "Hiç mesaj seçilmedi!";
+                return RedirectToAction("Inbox");
+            }
+
+            manager.MarkAsRead(messageIds);
+
+            TempData["Message"] = "Seçili mesajlar okundu olarak işaretlendi!";
+            return RedirectToAction("Inbox");
+        }
+        [HttpPost]
+        public ActionResult MarkAsUnRead(List<int> messageIds)
+        {
+            if(messageIds == null || !messageIds.Any())
+            {
+                TempData["Message"] = "Hiç mesaj seçilmedi!";
+                return RedirectToAction("Inbox");
+            }
+            manager.MarkAsUnRead(messageIds);
+
+            TempData["Message"] = "Seçili mesajlar okunmadı olarak işaretlendi!";
+            return RedirectToAction("Inbox");
+        }
+
+
         public PartialViewResult Sidebar()
         {
-            int sendCount = 0, inCount = 0;
-            if (manager.GetListInbox() != null)
+            string mail = Session["Username"].ToString();
+
+            if (manager.GetListInbox(mail) != null)
             {
-                inCount = manager.GetListInbox().Count();
+                ViewBag.d1 = manager.GetReadMessageCount(mail);
             }
-            if (manager.GetListSendBox() != null)
+            if (manager.GetListSendBox(mail) != null)
             {
-                sendCount = manager.GetListSendBox().Count();
+                ViewBag.d2 = manager.GetSentMessageCount(mail);
             }
-            ViewBag.d1 = inCount;
-            ViewBag.d2 = sendCount;
+
             return PartialView();
         }
     }
