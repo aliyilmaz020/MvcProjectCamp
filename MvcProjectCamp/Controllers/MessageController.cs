@@ -30,6 +30,12 @@ namespace MvcProjectCamp.Controllers
             var values = manager.GetListSendBox(mail).OrderByDescending(x => x.MessageDate).ToList();
             return View(values);
         }
+        public ActionResult TrashBox()
+        {
+            string mail = Session["Username"].ToString();
+            var values = manager.GetListTrashBox(mail).OrderByDescending(x => x.MessageDate).ToList();
+            return View(values);
+        }
         public ActionResult GetInBoxMessageDetails(int id)
         {
             var value = manager.TGetById(id);
@@ -96,7 +102,19 @@ namespace MvcProjectCamp.Controllers
             TempData["Message"] = "Seçili mesajlar okunmadı olarak işaretlendi!";
             return RedirectToAction("Inbox");
         }
+        [HttpPost]
+        public ActionResult MarkAsRemove(List<int> messageIds)
+        {
+            if(messageIds == null || !messageIds.Any())
+            {
+                TempData["Message"] = "Hiç mesaj seçilmedi!";
+                return RedirectToAction("Inbox");
+            }
+            manager.MarkAsRemove(messageIds);
+            TempData["Message"] = "Seçili mesajlar silindi.";
+            return RedirectToAction("Inbox");
 
+        }
 
         public PartialViewResult Sidebar()
         {
@@ -109,6 +127,10 @@ namespace MvcProjectCamp.Controllers
             if (manager.GetListSendBox(mail) != null)
             {
                 ViewBag.d2 = manager.GetSentMessageCount(mail);
+            }
+            if (manager.GetListTrashBox(mail) != null)
+            {
+                ViewBag.d3 = manager.GetTrashMessageCount(mail);
             }
 
             return PartialView();

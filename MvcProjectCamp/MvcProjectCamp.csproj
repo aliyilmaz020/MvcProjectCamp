@@ -2444,6 +2444,7 @@
     <Content Include="Templates\weblogin\scss\style.scss" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\ErrorPage\Page401.cshtml" />
+    <Content Include="Views\Message\TrashBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -99,6 +99,10 @@
     <Compile Include="Migrations\202503231556347_mg-MessageIsRead.Designer.cs">
       <DependentUpon>202503231556347_mg-MessageIsRead.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503252053417_mg-TrashMessagesIsDelete.cs" />
+    <Compile Include="Migrations\202503252053417_mg-TrashMessagesIsDelete.Designer.cs">
+      <DependentUpon>202503252053417_mg-TrashMessagesIsDelete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503231556347_mg-MessageIsRead.resx">
       <DependentUpon>202503231556347_mg-MessageIsRead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503252053417_mg-TrashMessagesIsDelete.resx">
+      <DependentUpon>202503252053417_mg-TrashMessagesIsDelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

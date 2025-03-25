@@ -13,5 +13,6 @@ namespace DataAccessLayer.Abstract
         int GetMessageCount(Expression<Func<Message,bool>> filter);
         void MarkAsRead(List<int> messageIds);
         void MarkAsUnRead(List<int> messageIds);
+        void MarkAsRemove(List<int> messageIds);
     }
 }

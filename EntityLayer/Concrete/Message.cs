@@ -32,6 +32,7 @@ namespace EntityLayer.Concrete
         [Required]
         public bool MessageIsRead { get; set; }
         public DateTime MessageDate { get; set; }
+        public bool MessageIsDelete { get; set; }
 
     }
 }

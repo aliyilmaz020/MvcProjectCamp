@@ -20,12 +20,17 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetListInbox(string mail)
         {
-            return _messageDal.List(x => x.ReceiverMail == mail);
+            return _messageDal.List(x => x.ReceiverMail == mail && x.MessageIsDelete==true);
         }
 
         public List<Message> GetListSendBox(string mail)
         {
-            return _messageDal.List(x => x.SenderMail == mail);
+            return _messageDal.List(x => x.SenderMail == mail && x.MessageIsDelete == true);
+        }
+
+        public List<Message> GetListTrashBox(string mail)
+        {
+            return _messageDal.List(x => x.ReceiverMail == mail && x.MessageIsDelete == false);
         }
 
         public int GetReadMessageCount(string mail)
@@ -36,6 +41,11 @@ namespace BusinessLayer.Concrete
         public int GetSentMessageCount(string mail)
         {
             return _messageDal.GetMessageCount(x => x.SenderMail == mail);
+        }
+
+        public int GetTrashMessageCount(string mail)
+        {
+            return _messageDal.GetMessageCount(x => x.ReceiverMail == mail && x.MessageIsDelete == false);
         }
 
         public void IsRead(int id, bool isRead)
@@ -51,6 +61,11 @@ namespace BusinessLayer.Concrete
         public void MarkAsRead(List<int> messageIds)
         {
             _messageDal.MarkAsRead(messageIds);
+        }
+
+        public void MarkAsRemove(List<int> messageIds)
+        {
+            _messageDal.MarkAsRemove(messageIds);
         }
 
         public void MarkAsUnRead(List<int> messageIds)

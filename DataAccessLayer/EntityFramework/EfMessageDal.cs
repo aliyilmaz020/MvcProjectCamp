@@ -27,6 +27,17 @@ namespace DataAccessLayer.EntityFramework
             }
             _context.SaveChanges();
         }
+
+        public void MarkAsRemove(List<int> messageIds)
+        {
+            var messages = _context.Set<Message>().Where(x=>messageIds.Contains(x.MessageId)).ToList();
+            foreach(var message in messages)
+            {
+                message.MessageIsDelete = false;
+            }
+            _context.SaveChanges();
+        }
+
         public void MarkAsUnRead(List<int> messageIds)
         {
             var messages = _context.Set<Message>().Where(x => messageIds.Contains(x.MessageId)).ToList();
@@ -36,5 +47,6 @@ namespace DataAccessLayer.EntityFramework
             }
             _context.SaveChanges();
         }
+        
     }
 }
