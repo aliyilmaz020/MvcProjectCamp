@@ -14,5 +14,6 @@ namespace DataAccessLayer.Abstract
         void MarkAsRead(List<int> messageIds);
         void MarkAsUnRead(List<int> messageIds);
         void MarkAsRemove(List<int> messageIds);
+        void MarkAsUndo(List<int> messageIds);
     }
 }

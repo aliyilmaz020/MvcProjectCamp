@@ -115,7 +115,18 @@ namespace MvcProjectCamp.Controllers
             return RedirectToAction("Inbox");
 
         }
-
+        [HttpPost]
+        public ActionResult MarkAsUndo(List<int> messageIds)
+        {
+            if (messageIds == null || !messageIds.Any())
+            {
+                TempData["Message"] = "Hiç mesaj seçilmedi!";
+                return RedirectToAction("Inbox");
+            }
+            manager.MarkAsUndo(messageIds);
+            TempData["Message"] = "Silme işlemi geri alındı.";
+            return RedirectToAction("Inbox");
+        }
         public PartialViewResult Sidebar()
         {
             string mail = Session["Username"].ToString();

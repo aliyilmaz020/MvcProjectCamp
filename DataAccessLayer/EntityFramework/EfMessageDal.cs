@@ -38,6 +38,16 @@ namespace DataAccessLayer.EntityFramework
             _context.SaveChanges();
         }
 
+        public void MarkAsUndo(List<int> messageIds)
+        {
+            var messages = _context.Set<Message>().Where(x => messageIds.Contains(x.MessageId)).ToList();
+            foreach (var message in messages)
+            {
+                message.MessageIsDelete = true;
+            }
+            _context.SaveChanges();
+        }
+
         public void MarkAsUnRead(List<int> messageIds)
         {
             var messages = _context.Set<Message>().Where(x => messageIds.Contains(x.MessageId)).ToList();

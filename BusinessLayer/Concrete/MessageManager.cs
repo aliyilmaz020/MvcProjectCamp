@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetListInbox(string mail)
         {
-            return _messageDal.List(x => x.ReceiverMail == mail && x.MessageIsDelete==true);
+            return _messageDal.List(x => x.ReceiverMail == mail && x.MessageIsDelete == true);
         }
 
         public List<Message> GetListSendBox(string mail)
@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetListTrashBox(string mail)
         {
-            return _messageDal.List(x => x.ReceiverMail == mail && x.MessageIsDelete == false);
+            return _messageDal.List(x => (x.ReceiverMail == mail || x.SenderMail == mail) && x.MessageIsDelete == false);
         }
 
         public int GetReadMessageCount(string mail)
@@ -40,12 +40,12 @@ namespace BusinessLayer.Concrete
 
         public int GetSentMessageCount(string mail)
         {
-            return _messageDal.GetMessageCount(x => x.SenderMail == mail);
+            return _messageDal.GetMessageCount(x => x.SenderMail == mail && x.MessageIsDelete == true);
         }
 
         public int GetTrashMessageCount(string mail)
         {
-            return _messageDal.GetMessageCount(x => x.ReceiverMail == mail && x.MessageIsDelete == false);
+            return _messageDal.GetMessageCount(x => (x.ReceiverMail == mail || x.SenderMail == mail) && x.MessageIsDelete == false);
         }
 
         public void IsRead(int id, bool isRead)
@@ -66,6 +66,11 @@ namespace BusinessLayer.Concrete
         public void MarkAsRemove(List<int> messageIds)
         {
             _messageDal.MarkAsRemove(messageIds);
+        }
+
+        public void MarkAsUndo(List<int> messageIds)
+        {
+            _messageDal.MarkAsUndo(messageIds);
         }
 
         public void MarkAsUnRead(List<int> messageIds)
