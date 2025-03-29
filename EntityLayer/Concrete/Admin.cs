@@ -14,11 +14,11 @@ namespace EntityLayer.Concrete
         public int AdminId { get; set; }
         [Required]
         [Column(TypeName = "Varchar")]
-        [StringLength(20)]
+        [StringLength(100)]
         public string AdminUserName { get; set; }
         [Required]
         [Column(TypeName = "Varchar")]
-        [StringLength(20)]
+        [StringLength(100)]
         public string AdminPassword { get; set; }
         [Required]
         [Column(TypeName = "Char")]
