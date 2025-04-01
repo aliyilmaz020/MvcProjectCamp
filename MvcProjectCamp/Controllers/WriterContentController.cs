@@ -8,16 +8,18 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
-    public class ContentController : Controller
+    public class WriterContentController : Controller
     {
         ContentManager cm = new ContentManager(new EfContentDal());
+        // GET: WriterContent
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult ContentByHeading(int id)
+        public ActionResult ContentByHeading()
         {
-            var values = cm.GetListByHeadingId(id);
+            string mail = Session["Username"].ToString();
+            var values = cm.GetListByWriter(mail);
             return View(values);
         }
     }

@@ -47,5 +47,15 @@ namespace BusinessLayer.Concrete
         {
             return _writerDal.IsLogin(x=>x.WriterMail == username && x.WriterPassword == password);
         }
+
+        public string TWriterName(string username)
+        {
+            return _writerDal.Operations(x=>x.WriterMail == username).WriterName + " " + _writerDal.Operations(x => x.WriterMail == username).WriterSurname;
+        }
+
+        public int TWriterId(string username)
+        {
+            return _writerDal.Operations(x => x.WriterMail == username).WriterId;
+        }
     }
 }

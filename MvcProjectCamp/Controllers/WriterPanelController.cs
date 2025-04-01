@@ -39,8 +39,23 @@ namespace MvcProjectCamp.Controllers
         [HttpPost]
         public ActionResult NewHeading(Heading p)
         {
+            ModelState.Clear();
+            p.WriterId = int.Parse(Session["WriterId"].ToString());
+            ValidationResult results = validations.Validate(p);
+            if (results.IsValid)
+            {
+                hm.TInsert(p);
+                return RedirectToAction("MyHeading");
+            }
+            else
+            {
+                foreach (var x in results.Errors)
+                {
+                    ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
+                }
+            }
             ViewBag.Category = GetCategories();
-            return View();
+            return View(p);
         }
         [HttpGet]
         public ActionResult EditHeading(int id)
@@ -57,7 +72,7 @@ namespace MvcProjectCamp.Controllers
             if (results.IsValid)
             {
                 hm.TUpdate(p);
-                return RedirectToAction("Index");
+                return RedirectToAction("MyHeading","WriterPanel");
             }
             else
             {
@@ -67,7 +82,7 @@ namespace MvcProjectCamp.Controllers
                 }
             }
             ViewBag.Category = GetCategories();
-            return View();
+            return View(p);
         }
         public ActionResult RemoveHeading(int id)
         {

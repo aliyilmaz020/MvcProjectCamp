@@ -9,6 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IContentService : IGenericService<Content>
     {
-        List<Content> GetListHeadingById(int id);
+        List<Content> GetListByHeadingId(int id);
+        List<Content> GetListByWriter(string mail);
     }
 }

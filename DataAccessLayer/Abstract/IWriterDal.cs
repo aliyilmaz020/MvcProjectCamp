@@ -10,7 +10,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface IWriterDal : IRepositoryDal<Writer>
     {
-        string UserRole(Expression<Func<Writer,bool>> filter);
-        bool IsLogin(Expression<Func<Writer,bool>> filter);
+        string UserRole(Expression<Func<Writer, bool>> filter);
+        bool IsLogin(Expression<Func<Writer, bool>> filter);
+        Writer Operations(Expression<Func<Writer, bool>> filter);
     }
 }

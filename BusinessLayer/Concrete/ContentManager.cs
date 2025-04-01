@@ -42,9 +42,14 @@ namespace BusinessLayer.Concrete
             _contentDal.Update(p);
         }
 
-        public List<Content> GetListHeadingById(int id)
+        public List<Content> GetListByHeadingId(int id)
         {
             return _contentDal.List(x => x.HeadingId == id);
+        }
+
+        public List<Content> GetListByWriter(string mail)
+        {
+            return _contentDal.List(x => x.Writer.WriterMail == mail);
         }
     }
 }

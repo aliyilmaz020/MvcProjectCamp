@@ -4,6 +4,7 @@
     ViewBag.Title = "MyHeading";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
     string color = "";
+    int count = 0;
 }
 <script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
@@ -92,7 +93,7 @@
                     <tbody>
                         @foreach (var x in Model)
                         {
-                            if (x.HeadingId % 2 == 0)
+                            if (count % 2 == 0)
                             {
                                 color = "badge badge-info";
                             }
@@ -103,7 +104,8 @@
 
                             <tr>
                                 <td>
-                                    @x.HeadingId
+                                    @{count++;} @count.
+
                                 </td>
                                 <td>
                                     <a>

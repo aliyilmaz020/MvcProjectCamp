@@ -10,5 +10,7 @@ namespace BusinessLayer.Abstract
     public interface IWriterService : IGenericService<Writer>
     {
         bool TIsLogin(string username, string password);
+        string TWriterName(string username);
+        int TWriterId(string username);
     }
 }

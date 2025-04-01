@@ -22,5 +22,10 @@ namespace DataAccessLayer.EntityFramework
         {
             return _context.Set<Writer>().Any(filter);
         }
+
+        public Writer Operations(Expression<Func<Writer, bool>> filter)
+        {
+            return _context.Set<Writer>().SingleOrDefault(filter);
+        }
     }
 }
