@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.Content
+@{
+    ViewBag.Title = "AddContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
+
+<title>Yeni İçerik Girişi</title>
+<br />
+<form method="post">
+    <div class="form-group-lg">
+        <input type="hidden" name="HeadingId" value="@ViewBag.Id" readonly="readonly" />
+        @Html.LabelFor(x => x.ContentText)
+        @Html.TextAreaFor(x => x.ContentText,8,1, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ContentText, "", new { @style = "color:red" })
+        <br />
+        <button type="submit" class="btn btn-outline-success">Kaydet</button>
+    </div>
+</form>
+
+

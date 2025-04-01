@@ -1,150 +1,22 @@
-﻿
+﻿@model EntityLayer.Concrete.Writer
 @{
     ViewBag.Title = "WriterProfile";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
-    string color = "";
-    string colorStatus = "";
-    string status = "";
+
 }
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
 
-<title>Başlıklar</title>
-<!DOCTYPE html>
-<html>
-
-<body class="hold-transition sidebar-mini">
-    
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Başlıklar</h1>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- Main content -->
-    <section class="content">
-        <!-- Default box -->
-        <div class="card">
-            <div class="card-header">
-                <a href="/Heading/AddHeading" class="btn btn-primary">Başlık Ekle</a>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-
-                </div>
-            </div>
-            <div class="card-body p-0">
-                <table class="table table-striped projects">
-                    <thead>
-                        <tr>
-                            <th style="width: 1%">
-                                #
-                            </th>
-                            <th style="width: 20%">
-                                Başlık Adı
-                            </th>
-                            <th style="width: 30%">
-                                Oluşturan Yazar
-                            </th>
-                            <th style="width:20%;">
-                                Durum
-                            </th>
-                            <th style="width: 8%" class="text-center">
-                                Kategori
-                            </th>
-                            <th style="width: 20%">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var x in Model)
-                        {
-                            if (x.HeadingId % 2 == 0)
-                            {
-                                color = "badge badge-info";
-                            }
-                            else
-                            {
-                                color = "badge badge-secondary";
-                            }
-                            if (x.HeadingStatus == true)
-                            {
-                                colorStatus = "badge badge-success";
-                                status = "Aktif";
-                            }
-                            else
-                            {
-                                colorStatus = "badge badge-danger";
-                                status = "Pasif";
-                            }
-                            <tr>
-                                <td>
-                                    @x.HeadingId
-                                </td>
-                                <td>
-                                    <a>
-                                        @x.HeadingName
-                                    </a>
-                                    <br />
-                                    <small>
-                                        Oluşturulma Tarihi: @x.HeadingDate.ToShortDateString()
-                                    </small>
-                                </td>
-                                <td>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            @x.Writer.WriterName @x.Writer.WriterSurname
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <span class="@colorStatus">@status</span>
-                                </td>
-                                <td class="project-state">
-                                    <span class="@color">@x.Category.CategoryName</span>
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@x.HeadingId">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        Yazılar
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@x.HeadingId">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Düzenle
-                                    </a>
-                                    @if (x.HeadingStatus == true)
-                                    {
-                                        <a class="btn btn-danger btn-sm" href="/Heading/RemoveHeading/@x.HeadingId">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Pasif Yap
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        <a class="btn btn-success btn-sm" href="/Heading/RemoveHeading/@x.HeadingId">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Aktif Yap
-                                        </a>
-                                    }
-
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-    </section>
-</body>
-</html>
+<title>Profilim</title>
+<br />
+@Html.LabelFor(x => x.WriterName)
+@Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+<br />
+@Html.LabelFor(x => x.WriterSurname)
+@Html.TextBoxFor(x => x.WriterSurname, new { @class = "form-control" })
+<br />
+@Html.LabelFor(x => x.WriterAbout)
+@Html.TextBoxFor(x => x.WriterAbout, new { @class = "form-control" })
+<br />
+@Html.LabelFor(x => x.WriterTitle)
+@Html.TextBoxFor(x => x.WriterTitle, new { @class = "form-control" })
 

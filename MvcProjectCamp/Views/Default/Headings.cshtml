@@ -1,4 +1,4 @@
-﻿
+﻿@model List<EntityLayer.Concrete.Heading>
 @{
     Layout = null;
 }
@@ -48,76 +48,26 @@
                         <img src="~/Templates/webadmin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">@Session["Writer"].ToString()</a>
+                        <a href="#" class="d-block"></a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
 
-                        <li class="nav-item">
-                            <a href="/WriterPanel/WriterProfile/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Profilim
-                                </p>
-                            </a>
-                        </li>
+                        @foreach (var x in Model)
+                        {
+                            <li class="nav-item">
+                                <a href="/Default/Headings/@x.HeadingId" class="nav-link">
+                                    <p>
+                                        @x.HeadingName
+                                    </p>
+                                </a>
+                            </li>
+                        }
 
-                        <li class="nav-item">
-                            <a href="/WriterPanel/MyHeading/" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Başlıklarım
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/WriterPanel/AllHeading/" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Tüm Başlıklar
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="/Message/Inbox/" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Mesajlar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/WriterContent/ContentByHeading/" class="nav-link">
-                                <i class="nav-icon fas fa-calendar-alt"></i>
-                                <p>
-                                    Yazılarım
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>
-                                    Siteye Git
-                                </p>
-                            </a>
-
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/Login/SignOut/" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
-                                <p>
-                                    Çıkış yap
-                                </p>
-                            </a>
-
-                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -128,14 +78,15 @@
         <div class="content-wrapper">
             <!-- Main content -->
             <div class="content">
-                @RenderBody()
                 <!-- /.container-fluid -->
+                @Html.Action("Index","Default")
             </div>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
     </div>
     <!-- ./wrapper -->
+    <script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
     <!-- REQUIRED SCRIPTS -->
     <!-- Bootstrap -->
     <script src="~/Templates/webadmin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -37,7 +37,7 @@ namespace MvcProjectCamp.Controllers
                 Session["Writer"] = writer.TWriterName(username);
                 Session["WriterId"] = writer.TWriterId(username);
                 Session["Username"] = username.ToString();
-                return RedirectToAction("MyHeading", "WriterPanel");
+                return RedirectToAction("WriterProfile", "WriterPanel");
             }
             else
             {

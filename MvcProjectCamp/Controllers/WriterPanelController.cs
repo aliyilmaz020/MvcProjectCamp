@@ -17,12 +17,16 @@ namespace MvcProjectCamp.Controllers
     {
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
+        WriterManager wm = new WriterManager(new EfWriterDal());
         HeadingValidator validations = new HeadingValidator();
 
         // GET: WriterPanel
         public ActionResult WriterProfile()
         {
-            return View();
+            string mail = Session["Username"].ToString();
+            int id = wm.TWriterId(mail);
+            var value = wm.TGetById(id);
+            return View(value);
         }
         public ActionResult MyHeading()
         {
@@ -90,6 +94,11 @@ namespace MvcProjectCamp.Controllers
             value.HeadingStatus = false;
             hm.TUpdate(value);
             return RedirectToAction("MyHeading", "WriterPanel");
+        }
+        public ActionResult AllHeading()
+        {
+            var values = hm.TGetList();
+            return View(values);
         }
         private List<SelectListItem> GetCategories()
         {
