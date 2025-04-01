@@ -10,15 +10,22 @@ namespace BusinessLayer.Concrete
 {
     public class RoleManager : IRoleService
     {
-        private readonly IAdminDal _dal;
-        public RoleManager(IAdminDal dal)
+        private readonly IAdminDal _adminDal;
+        private readonly IWriterDal _writerDal;
+        public RoleManager(IAdminDal adminDal, IWriterDal writerDal)
         {
-            _dal = dal;
+            _adminDal = adminDal;
+            _writerDal = writerDal;
+        }
+
+        public string AdminRole(string username)
+        {
+            return _adminDal.AdminRole(x => x.AdminUserName == username);
         }
 
         public string UserRole(string username)
         {
-            return _dal.UserRole(x => x.AdminUserName == username);
+            return _writerDal.UserRole(x=>x.WriterMail == username);
         }
     }
 }

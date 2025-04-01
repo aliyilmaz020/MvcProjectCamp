@@ -8,6 +8,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IRoleService
     {
+        string AdminRole(string username);
         string UserRole(string username);
     }
 }

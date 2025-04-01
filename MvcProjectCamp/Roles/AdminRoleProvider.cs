@@ -10,7 +10,7 @@ namespace MvcProjectCamp.Roles
 {
     public class AdminRoleProvider : RoleProvider
     {
-        RoleManager manager = new RoleManager(new EfAdminDal());
+        RoleManager manager = new RoleManager(new EfAdminDal(), new EfWriterDal());
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -40,7 +40,15 @@ namespace MvcProjectCamp.Roles
 
         public override string[] GetRolesForUser(string username)
         {
-            var role = manager.UserRole(username);
+            string role = "";
+            if (manager.UserRole(username) != "")
+            {
+                role = manager.UserRole(username);
+            }
+            if (manager.AdminRole(username) != "")
+            {
+                role = manager.AdminRole(username);
+            }
             return new string[] { role };
         }
 

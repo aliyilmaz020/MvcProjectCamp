@@ -12,7 +12,8 @@ namespace MvcProjectCamp.Controllers
 {
     public class LoginController : Controller
     {
-        AdminManager manager = new AdminManager(new EfAdminDal());
+        AdminManager admin = new AdminManager(new EfAdminDal());
+        WriterManager writer = new WriterManager(new EfWriterDal());
         [HttpGet]
         public ActionResult Index()
         {
@@ -21,18 +22,31 @@ namespace MvcProjectCamp.Controllers
         [HttpPost]
         public ActionResult Index(string username, string password)
         {
-            bool isLogin = manager.TIsLogin(username, password);
-            if (isLogin)
+            bool isAdminLogin = admin.TIsLogin(username, password);
+            bool isUserLogin = writer.TIsLogin(username, password);
+            if (isAdminLogin)
             {
                 FormsAuthentication.SetAuthCookie(username.ToString(), false);
                 Session["Username"] = username.ToString();
                 return RedirectToAction("Index", "Writer");
+            }
+            else if (isUserLogin)
+            {
+                FormsAuthentication.SetAuthCookie(username.ToString(), false);
+                Session["Username"] = username.ToString();
+                return RedirectToAction("MyHeading", "WriterPanel");
             }
             else
             {
                 TempData["Error"] = "Kullanıcı Adı veya Şifre Hatalı!";
                 return View();
             }
+        }
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
