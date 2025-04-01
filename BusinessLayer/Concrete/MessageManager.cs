@@ -25,12 +25,12 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetListSendBox(string mail)
         {
-            return _messageDal.List(x => x.SenderMail == mail && x.MessageIsDelete == true);
+            return _messageDal.List(x => x.SenderMail == mail && x.MessageIsDeleteSent == true);
         }
 
         public List<Message> GetListTrashBox(string mail)
         {
-            return _messageDal.List(x => (x.ReceiverMail == mail || x.SenderMail == mail) && x.MessageIsDelete == false);
+            return _messageDal.List(x => (x.ReceiverMail == mail || x.SenderMail == mail) && x.MessageIsDelete == false && x.MessageIsDeleteSent == false);
         }
 
         public int GetReadMessageCount(string mail)

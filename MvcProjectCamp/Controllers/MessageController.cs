@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
-    [Authorize(Roles="A,W")]
+    [Authorize(Roles = "A,W")]
     public class MessageController : Controller
     {
         MessageManager manager = new MessageManager(new EfMessageDal());
@@ -39,7 +39,7 @@ namespace MvcProjectCamp.Controllers
         public ActionResult GetInBoxMessageDetails(int id)
         {
             var value = manager.TGetById(id);
-            manager.IsRead(id,true);
+            manager.IsRead(id, true);
             return View(value);
         }
         public ActionResult GetSendBoxMessageDetails(int id)
@@ -92,7 +92,7 @@ namespace MvcProjectCamp.Controllers
         [HttpPost]
         public ActionResult MarkAsUnRead(List<int> messageIds)
         {
-            if(messageIds == null || !messageIds.Any())
+            if (messageIds == null || !messageIds.Any())
             {
                 TempData["Message"] = "Hiç mesaj seçilmedi!";
                 return RedirectToAction("Inbox");
@@ -105,7 +105,7 @@ namespace MvcProjectCamp.Controllers
         [HttpPost]
         public ActionResult MarkAsRemove(List<int> messageIds)
         {
-            if(messageIds == null || !messageIds.Any())
+            if (messageIds == null || !messageIds.Any())
             {
                 TempData["Message"] = "Hiç mesaj seçilmedi!";
                 return RedirectToAction("Inbox");
