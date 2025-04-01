@@ -19,7 +19,7 @@ namespace DataAccessLayer.EntityFramework
             return _context.Set<Admin>().Any(filter);
         }
 
-        public string UserRole(Expression<Func<Admin, bool>> filter)
+        public string AdminRole(Expression<Func<Admin, bool>> filter)
         {
             var admin = _context.Set<Admin>().SingleOrDefault(filter);
             return admin?.AdminRole ?? string.Empty;

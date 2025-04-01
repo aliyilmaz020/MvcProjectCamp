@@ -11,6 +11,6 @@ namespace DataAccessLayer.Abstract
     public interface IAdminDal : IRepositoryDal<Admin>
     {
         bool IsLogin(Expression<Func<Admin, bool>> filter);
-        string UserRole(Expression<Func<Admin, bool>> filter);
+        string AdminRole(Expression<Func<Admin, bool>> filter);
     }
 }
