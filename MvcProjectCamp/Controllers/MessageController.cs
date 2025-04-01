@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace MvcProjectCamp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="A,W")]
     public class MessageController : Controller
     {
         MessageManager manager = new MessageManager(new EfMessageDal());

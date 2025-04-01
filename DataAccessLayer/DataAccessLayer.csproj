@@ -126,6 +126,10 @@
     <Compile Include="Migrations\202503282254146_mg-AdminLength.Designer.cs">
       <DependentUpon>202503282254146_mg-AdminLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503312046550_mg-WriterRole.cs" />
+    <Compile Include="Migrations\202503312046550_mg-WriterRole.Designer.cs">
+      <DependentUpon>202503312046550_mg-WriterRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503282254146_mg-AdminLength.resx">
       <DependentUpon>202503282254146_mg-AdminLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503312046550_mg-WriterRole.resx">
+      <DependentUpon>202503312046550_mg-WriterRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

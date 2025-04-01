@@ -91,6 +91,7 @@ namespace BusinessLayer.Concrete
         public void TInsert(Message p)
         {
             p.MessageIsRead = false;
+            p.MessageIsDelete = true;
             _messageDal.Insert(p);
         }
 

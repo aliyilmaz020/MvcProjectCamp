@@ -1,7 +1,8 @@
 ﻿@model EntityLayer.Concrete.Message
 @{
     ViewBag.Title = "GetSendBoxMessageDetails";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    if (User.IsInRole("W")) { Layout = "~/Views/Shared/_WriterLayout.cshtml"; }
+    if (User.IsInRole("A")) { Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 }
 <title>Gönderilen Mesajın Detayları</title>
 <script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>

@@ -2,7 +2,8 @@
 @model List<EntityLayer.Concrete.Message>
 @{
     ViewBag.Title = "SendBox";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    if (User.IsInRole("W")) { Layout = "~/Views/Shared/_WriterLayout.cshtml"; }
+    if (User.IsInRole("A")) { Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
     string date = "";
     string color = "";
 }

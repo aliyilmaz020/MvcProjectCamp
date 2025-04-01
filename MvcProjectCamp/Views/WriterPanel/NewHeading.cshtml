@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "NewHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<title>Başlık Ekleme</title>
+<br />
+<form method="post">
+    <div class="form-group-lg">
+        @Html.LabelFor(x => x.HeadingName)
+        @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingName, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(x => x.CategoryId)
+        @Html.DropDownListFor(x => x.CategoryId, ViewBag.Category as List<SelectListItem>, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryId, "", new { @style = "color:red" })
+        <br />
+        <button type="submit" class="btn btn-outline-success">Kaydet</button>
+    </div>
+</form>
+

@@ -38,6 +38,11 @@ namespace EntityLayer.Concrete
         public string WriterTitle { get; set; }
 
         public bool WriterStatus { get; set; }
+
+        [Required]
+        [Column(TypeName = "char")]
+        [StringLength(1)]
+        public string WriterRole { get; set; }
         public virtual ICollection<Heading> Headings { get; set; }
         public virtual ICollection<Content> Contents { get; set; }
     }

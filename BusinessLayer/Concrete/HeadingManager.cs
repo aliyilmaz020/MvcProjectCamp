@@ -35,6 +35,7 @@ namespace BusinessLayer.Concrete
             return _headingDal.List();
         }
 
+
         public void TRemove(Heading p)
         {
             _headingDal.Update(p);
@@ -43,6 +44,11 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Heading p)
         {
             _headingDal.Update(p);
+        }
+
+        public List<Heading> GetListByWriter(string mail)
+        {
+            return _headingDal.List(x => x.Writer.WriterMail == mail && x.HeadingStatus == true);
         }
     }
 }

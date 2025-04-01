@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IWriterService : IGenericService<Writer>
     {
+        bool TIsLogin(string username, string password);
     }
 }
