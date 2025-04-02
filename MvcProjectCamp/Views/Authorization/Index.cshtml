@@ -1,0 +1,61 @@
+﻿@model List<EntityLayer.Concrete.Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<title>Adminler</title>
+<script src="~/Templates/webadmin/plugins/jquery/jquery.min.js"></script>
+<br />
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>E-Posta</th>
+            <th>Yetki</th>
+            <th>Durum</th>
+            <th>Pasif Yap</th>
+            <th>Yetkisini Değiştir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@{count++;} @count</th>
+                <td>@item.AdminUserName</td>
+                <td>@item.AdminRole</td>
+                <td>Aktif</td>
+                <td><a href="/Authorization/RemoveCategory/@item.AdminId" class="btn btn-danger">Pasif Yap</a></td>
+                <td><a href="/Authorization/EditAdmin/@item.AdminId" class="btn btn-warning">Yetkisini Değiştir</a></td>
+                <td><a href="/Authorization/Headings/@item.AdminId" class="btn btn-dark">Başlıklar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-outline-primary" data-target="#Modal1" data-toggle="modal">Yeni Admin Tanımla</a>
+<div class="modal fade" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Admin Ekleme</h3>
+            </div>
+            <form method="post" action="/Authorization/AddAdmin/">
+                <div class="modal-body">
+                    <input name="AdminUserName" class="form-control" placeholder="Kullanıcı Adı" />
+                    <br />
+                    <input name="AdminPassword" class="form-control" placeholder="Şifre" />
+                    <br />
+                    <select name="AdminRole" class="form-control">
+                        <option value="">Rol Seçiniz</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                    <br />
+                    <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
